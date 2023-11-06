@@ -1,11 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
-    <title>Database Project</title>
-</head>
-<body>
-    <h1>Welcome to Flask</h1>
-</body>
-</html>
+{% extends "base.html" %} {% block title %} Query Plan {% endblock %} {% block
+content %}
+
+<h1>Welcome to Query Spotter</h1>
+<div class="col-4">
+    <form method="POST" action="/query">
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Type Query</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" cols="10" placeholder="Enter your SQL query here"></textarea>
+          </div>
+        <button id="btnFetch" type="submit" class="btn btn-primary">
+          Submit
+        </button>
+    </form>
+</div>
+
+{%endblock%}
