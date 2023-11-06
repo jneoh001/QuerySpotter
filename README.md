@@ -12,12 +12,7 @@ PostgreSQL query visualizer using Flask.
 1. Install required packages
 `pip install -r requirements.txt`
 
-2. Activate virtual environment
-
-- Windows `env/Scripts/activate`
-- MacOS/Linux `source env/bin/activate`
-
-3. Run Server
+2. Run Server
 
 `cd backend`
 `python backend.py`
