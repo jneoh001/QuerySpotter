@@ -8,3 +8,21 @@ code {
     background-color: #eee;
     padding: 2px;
 }
+
+
+/* Query.HTML */
+
+.queryWrapper{
+    display: flex;
+    flex-direction: row;
+}
+
+.timeGraph{
+    flex: 5;
+    /* background-color: pink; */
+}
+
+.rawResults{
+    flex: 5;
+    /* background-color: red; */
+}

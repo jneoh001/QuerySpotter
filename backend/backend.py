@@ -12,12 +12,17 @@ def query():
     input = request.form['queryInput']
     result = dbquery(input)
     
-    planning_time , execution_time = extract_result_times(input)
+    planning_time , execution_time, base64_image = extract_result_times(input)
 
     # Debugging print statements 
     print(f'Planning time: {planning_time} \n Execution time: {execution_time}')
-    return result
+
+
+
+    # return result
     # return jsonify({'response': result})
+
+    return render_template('query.html', base64_image=base64_image, result=result)
 
 if __name__ == '__main__':
     app.run(debug=True)

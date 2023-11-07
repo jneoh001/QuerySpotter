@@ -1,6 +1,15 @@
 import psycopg2
 import json
-import re 
+import re
+import matplotlib.pyplot as plt
+import matplotlib
+
+matplotlib.use(
+    "Agg"
+)  # Need to use this AGG backend thread thing so it doesn't give errors. Dont remove.
+import io
+import base64
+import decimal
 
 """ 
 Parent function to 
@@ -26,11 +35,9 @@ def dbquery(input):
 
         cursor.execute(input)
 
-         
-        # Fetch the column names from the cursor description , 
+        # Fetch the column names from the cursor description ,
         # 0 - name  ( From docs https://www.psycopg.org/docs/cursor.html)
         column_names = [desc[0] for desc in cursor.description]
-
 
         rows = cursor.fetchall()
         for row in rows:
@@ -47,8 +54,8 @@ def dbquery(input):
             connection.close()
             print("PostgreSQL connection is closed")
 
-    #return result
-    return json.dumps(result)
+    # return result
+    return json.dumps(result, default=decimal_default)
 
 
 """
@@ -73,10 +80,8 @@ def extract_result_times(input):
 
     # Example result [ ('Seq Scan on region (actual time=0.008..0.009 rows=5 loops=1)',), ('  Buffers: shared hit=1',), ('Planning:',), ('  Buffers: shared hit=63',), ('Planning Time: 0.308 ms',), ('Execution Time: 0.028 ms',)]
 
-
     # We gonna use regex to extract out numerical portion
 
-    
     for item in result:
         if "QUERY PLAN" in item:
             # Extract the relevant part of the QUERY PLAN
@@ -84,13 +89,48 @@ def extract_result_times(input):
 
             if "Planning Time" in query_plan:
                 # Extract planning time
-                numerical_portion = re.search(r'(\d+\.\d+)', query_plan)
+                numerical_portion = re.search(r"(\d+\.\d+)", query_plan)
                 if numerical_portion:
-                    planning_time = float(numerical_portion.group(0)) # group 0 gives us the entire matched portion i think.
+                    planning_time = float(
+                        numerical_portion.group(0)
+                    )  # group 0 gives us the entire matched portion i think.
             if "Execution Time" in query_plan:
                 # Extract execution time
-                numerical_portion = re.search(r'(\d+\.\d+)', query_plan)
+                numerical_portion = re.search(r"(\d+\.\d+)", query_plan)
                 if numerical_portion:
-                    execution_time = float(numerical_portion.group(0)) # similarly here
+                    execution_time = float(numerical_portion.group(0))  # similarly here
 
-    return planning_time, execution_time
+    # Extract the values from the result
+    values = [planning_time, execution_time]
+
+    plt.clf() # We need this to clear the previous plot. Else, will have overlapping graphs
+    
+    plt.bar(["Planning Time", "Execution Time"], values)
+    plt.xlabel("Time")
+    plt.ylabel("Value")
+    plt.title("Comparison of Planning Time vs Execution Time (Ms)")
+
+    # Annotations
+    for i, value in enumerate(values):
+        plt.text(i, value, str(value), ha="center", va="bottom", color='red')
+
+    image_stream = io.BytesIO()
+    plt.savefig(image_stream, format="png")
+    image_stream.seek(0)
+
+    base64_image = base64.b64encode(image_stream.read()).decode("utf-8")
+
+    return planning_time, execution_time, base64_image
+
+
+
+
+
+''' 
+Util Function : Decimal Serializer ; To prevent errors caused by decimals
+'''
+
+def decimal_default(obj):
+    if isinstance(obj, decimal.Decimal):
+        return float(obj)
+    raise TypeError

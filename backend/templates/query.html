@@ -1,0 +1,19 @@
+{% extends 'base.html' %} 
+{% block title %} Query Dashboard {% endblock %} 
+
+{%block content %}
+
+<h1>Query Visualisation Dashbord</h1>
+<main class="queryWrapper">
+  <div class="timeGraph">
+    <img src="data:image/png;base64,{{ base64_image }}" alt="Time Plot" />
+  </div>
+
+  <!--Raw results here-->
+  <div class="rawResults">
+    <h2><u> Raw Results From Query: </u></h2>
+    <p>{{result}}</p>
+  </div>
+</main>
+
+{% endblock %}
