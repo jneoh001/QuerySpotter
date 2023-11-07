@@ -1,11 +1,11 @@
 # QuerySpotter
  
-![image](https://github.com/jneoh001/SC3020_Database_System_Principles/assets/95909920/de2b0b40-b784-4b82-b2d9-03fea447bd22)
+![Alt text](image.png)
 
 
 # About
 
-PostgreSQL query visualizer using Flask.
+Query Visualizer using Flask, PostgreSQL.
 
 # Usage
 
