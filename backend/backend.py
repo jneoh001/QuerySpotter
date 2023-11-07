@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify
+from database import dbquery
 
 app = Flask(__name__)
 
@@ -8,8 +9,11 @@ def home():
 
 @app.route('/query',methods=['POST'])
 def query():
-    print('Hello world!')
-    return jsonify({'response':'Hello world!'})
+    input = request.form['queryInput']
+    result = dbquery(input)
+
+    return result
+    # return jsonify({'response': result})
 
 if __name__ == '__main__':
     app.run(debug=True)

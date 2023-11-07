@@ -3,15 +3,20 @@ content %}
 
 <h1>Welcome to Query Spotter</h1>
 <div class="col-4">
-    <form method="POST" action="/query">
-        <div class="form-group">
-            <label for="exampleFormControlTextarea1">Type Query</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" cols="10" placeholder="Enter your SQL query here"></textarea>
-          </div>
-        <button id="btnFetch" type="submit" class="btn btn-primary">
-          Submit
-        </button>
-    </form>
+  <form method="POST" action="/query">
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Type Query</label>
+      <textarea
+        name = 'queryInput'
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+        cols="10"
+        placeholder="Enter your SQL query here"
+      ></textarea>
+    </div>
+    <button id="btnFetch" type="submit" class="btn btn-primary">Submit</button>
+  </form>
 </div>
 
 {%endblock%}
