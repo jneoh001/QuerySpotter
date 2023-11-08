@@ -9,8 +9,8 @@ Query Visualizer using Flask, PostgreSQL.
 
 # Usage
 
-1. Insta![image](https://github.com/jneoh001/QuerySpotter/assets/95909920/69c17a78-5f5f-4898-8c6b-6ba8fb142fbd)
-ll required packages
+1. Install required packages
+   
 `pip install -r requirements.txt`
 
 2. Run Server
