@@ -123,7 +123,11 @@ def extract_result_times(input):
     return planning_time, execution_time, base64_image
 
 
-
+'''
+Function to display the Natural Language Descriptio of the query
+'''
+def NLD(query):
+    pass
 
 
 ''' 
