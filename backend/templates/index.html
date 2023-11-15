@@ -2,21 +2,40 @@
 content %}
 
 <h1>Welcome to Query Spotter</h1>
-<div class="col-4">
-  <form method="POST" action="/query">
-    <div class="form-group">
-      <label for="exampleFormControlTextarea1">Type Query</label>
-      <textarea
-        name = 'queryInput'
-        class="form-control"
-        id="exampleFormControlTextarea1"
-        rows="3"
-        cols="10"
-        placeholder="Enter your SQL query here"
-      ></textarea>
-    </div>
-    <button id="btnFetch" type="submit" class="btn btn-primary">Submit</button>
-  </form>
+<div class="container text-start">
+  <div class="col-4">
+    <h3>Database Schema (db used: TPCH)</h3>
+    <p class="d-inline-flex gap-1">
+      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">cutomer</button>
+      <div class="col">
+        <div class="collapse multi-collapse" id="multiCollapseExample2">
+          <div class="card card-body">
+            <p>c_custkey (Primary Key)</p>
+            <p>c_name</p>
+            <p>c_address</p>
+            <p>c_nationkey</p>
+            <p>c_phone</p>
+            <p>c_acctbal</p>
+            <p>c_mktsegment</p>
+            <p>c_comment</p>
+          </div>
+      </div>
+    </p>
+    <form method="POST" action="/query">
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1">Type Query</label>
+        <textarea
+          name = 'queryInput'
+          class="form-control"
+          id="exampleFormControlTextarea1"
+          rows="3"
+          cols="10"
+          placeholder="Enter your SQL query here"
+        ></textarea>
+      </div>
+      <button id="btnFetch" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
 </div>
 
 {%endblock%}
