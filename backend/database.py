@@ -25,7 +25,7 @@ def dbquery(input,return_json=False):
         # Note: Update these details as accordingly to your details
         connection = psycopg2.connect(
             user="postgres",
-            password="root",
+            password="Alphate217",
             host="localhost",
             port="5432",
             database="TPC-H",
@@ -35,7 +35,7 @@ def dbquery(input,return_json=False):
 
         # Execute the query
         if return_json:
-            sql_command = 'EXPLAIN ( ANALYSE, BUFFERS, FORMAT JSON) ' + input
+            sql_command = 'EXPLAIN ( ANALYSE, BUFFERS, FORMAT TEXT) ' + input
         else:
             sql_command = input
         cursor.execute(sql_command)
@@ -121,13 +121,6 @@ def extract_result_times(input):
     base64_image = base64.b64encode(image_stream.read()).decode("utf-8")
 
     return planning_time, execution_time, base64_image
-
-
-'''
-Function to display the Natural Language Descriptio of the query
-'''
-def NLD(query):
-    pass
 
 
 ''' 
