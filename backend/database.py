@@ -25,7 +25,7 @@ def dbquery(input,return_json=False):
         # Note: Update these details as accordingly to your details
         connection = psycopg2.connect(
             user="postgres",
-            password="Alphate217",
+            password="root",
             host="localhost",
             port="5432",
             database="TPC-H",
@@ -35,7 +35,8 @@ def dbquery(input,return_json=False):
 
         # Execute the query
         if return_json:
-            sql_command = 'EXPLAIN ( ANALYSE, BUFFERS, FORMAT TEXT) ' + input
+            sql_command = 'EXPLAIN ( ANALYSE, BUFFERS, FORMAT JSON) ' + input
+
         else:
             sql_command = input
         cursor.execute(sql_command)
@@ -66,6 +67,8 @@ def dbquery(input,return_json=False):
 
 
 """
+Uses the raw text instead of JSON.
+
 Function to extract 
 1. Planning Time
 2. Execution Time
@@ -77,7 +80,7 @@ def extract_result_times(input):
     # Place this at the start to get info about the query
     final_input = "EXPLAIN ( analyze, buffers, costs off )" + input
     result = dbquery(final_input,False)
-    print(f"extract_result_times query: {result}")
+    # print(f"extract_result_times query: {result}")
 
     planning_time = 0
     execution_time = 0
