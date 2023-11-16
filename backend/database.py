@@ -36,9 +36,8 @@ def dbquery(input,return_json=False):
         # Execute the query
         if return_json:
             sql_command = 'EXPLAIN ( ANALYSE, BUFFERS, FORMAT JSON) ' + input
-
         else:
-            sql_command = input
+            sql_command = 'EXPLAIN ( ANALYSE, BUFFERS, FORMAT TEXT) ' + input
         cursor.execute(sql_command)
 
         # Fetch the column names from the cursor description ,
@@ -60,8 +59,8 @@ def dbquery(input,return_json=False):
     finally:
         if connection:
             cursor.close()
-            connection.close()
-            print("PostgreSQL connection is closed")
+            # connection.close()
+            # print("PostgreSQL connection is closed")
 
     return result
 
@@ -77,9 +76,7 @@ want from the QEP Analysis Query such as EXPLAIN / ANALYZE
 
 
 def extract_result_times(input):
-    # Place this at the start to get info about the query
-    final_input = "EXPLAIN ( analyze, buffers, costs off )" + input
-    result = dbquery(final_input,False)
+    result = dbquery(input,False)
     # print(f"extract_result_times query: {result}")
 
     planning_time = 0

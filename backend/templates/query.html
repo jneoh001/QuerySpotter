@@ -1,6 +1,4 @@
-{% extends 'base.html' %} 
-{% block title %} Query Dashboard {% endblock %} 
-
+{% extends 'base.html' %} {% block title %} Query Dashboard {% endblock %}
 {%block content %}
 
 <h1>Query Visualisation Dashbord</h1>
@@ -13,7 +11,9 @@
   <div class="rawResults">
     <h2><u> Raw Results From Query: </u></h2>
     <p>{{result}}</p>
+  </div>
 
+  <div class="operations">
     <h2><u> Operations Results</u></h2>
     <p>{{operations}}</p>
   </div>
