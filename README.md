@@ -1,6 +1,7 @@
 # QuerySpotter
  
-[![Alt text](image.png)](https://github.com/jneoh001/QuerySpotter/blob/main/logo.png?raw=true)
+<img width="782" alt="image" src="https://github.com/jneoh001/QuerySpotter/assets/95909920/fee42263-811a-4e74-bd83-2471f0bb3af1">
+
 
 
 # About
