@@ -25,7 +25,7 @@ def dbquery(input,return_json=False):
         # Note: Update these details as accordingly to your details
         connection = psycopg2.connect(
             user="postgres",
-            password="root",
+            password="Alphate217",
             host="localhost",
             port="5432",
             database="TPC-H",
@@ -39,18 +39,7 @@ def dbquery(input,return_json=False):
         else:
             sql_command = 'EXPLAIN ( ANALYSE, BUFFERS, FORMAT TEXT) ' + input
         cursor.execute(sql_command)
-
-        # Fetch the column names from the cursor description ,
-        # 0 - name  ( From docs https://www.psycopg.org/docs/cursor.html)
-        # column_names = [desc[0] for desc in cursor.description]
-
-        # rows = cursor.fetchall()
-        # for row in rows:
-        #     row_dict = {}
-        #     for i in range(len(column_names)):
-        #         row_dict[column_names[i]] = row[i]
-        #     result.append(row_dict)
-
+        
         # Gets the json result of what actually happened
         result = cursor.fetchall()
 
