@@ -19,7 +19,7 @@ def query():
     result = json.dumps(result[0][0][0]) # Access down to the JSON level. 
     
     #For Tree
-    graph_base64 = interactive_tree(result)
+    image_path = interactive_tree(result)
 
     #For Blocks
     visualise_blocks(input_query)
@@ -31,7 +31,7 @@ def query():
     # print(f'Planning time: {planning_time} \n Execution time: {execution_time}')
     # print(f'\n Backend.py query results: {result}')
 
-    return render_template('query.html', base64_image=base64_image, result=result, plan_base64=graph_base64)
+    return render_template('query.html', base64_image=base64_image, result=result,image_path=image_path)
 
 if __name__ == '__main__':
     app.run(debug=True)
