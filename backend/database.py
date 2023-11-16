@@ -15,11 +15,15 @@ import decimal
 Parent function to 
 Take in SQL Query and returns output. 
 
+input : input query
+return_json :  Return in JSON or Text
+headers : True if want to manually input headers
+
 Other functions will inherit and use to get result.
 """
 
 # Takes in an argument input_json to format whether the EXPLAIN call needs to return in JSON format or not
-def dbquery(input,return_json=False):
+def dbquery(input,return_json=False, headers=False):
     result = []
     try:
         # Note: Update these details as accordingly to your details
@@ -34,10 +38,16 @@ def dbquery(input,return_json=False):
         cursor = connection.cursor()
 
         # Execute the query
-        if return_json:
-            sql_command = 'EXPLAIN ( ANALYSE, BUFFERS, FORMAT JSON) ' + input
+
+        if headers :
+            sql_command = headers + input
         else:
-            sql_command = 'EXPLAIN ( ANALYSE, BUFFERS, FORMAT TEXT) ' + input
+            if return_json:
+                sql_command = 'EXPLAIN ( ANALYSE, BUFFERS, FORMAT JSON) ' + input
+            else:
+                sql_command = 'EXPLAIN ( ANALYSE, BUFFERS, FORMAT TEXT) ' + input
+                
+            
         cursor.execute(sql_command)
         
         # Gets the json result of what actually happened
