@@ -31,7 +31,7 @@ def query():
     interactive_tree(result)
 
     # For blocks
-    visualise_blocks_3d(input_query)
+    #visualise_blocks_3d(input_query)
 
     #visualise_blocks(input_query)
     # For Planning vs Execution Time Graph
@@ -53,30 +53,6 @@ def blocktuples():
     input_query = session.get('query')
     figure_html = visualise_blocks_3d(input_query)
     return render_template('blocktuples.html', figure_html=figure_html)
-
-
-
-
-
-
-
-
-
-
-
-@app.route('/query/blocktuples')
-def blocktuples():
-    input_query = session.get('query')
-    figure_html = visualise_blocks_3d(input_query)
-    return render_template('blocktuples.html', figure_html=figure_html)
-
-
-
-
-
-
-
-
 
 
 if __name__ == '__main__':

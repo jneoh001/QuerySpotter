@@ -36,7 +36,7 @@ def dbquery(input, return_json=False, headers=None):
         # Note: Update these details as accordingly to your details
         connection = psycopg2.connect(
             user="postgres",
-            password="root",
+            password="Alphate217",
             host="localhost",
             port="5432",
             database="TPCH",

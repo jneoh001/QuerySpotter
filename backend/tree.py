@@ -44,4 +44,4 @@ def interactive_tree(input_json):
         dot.edge(edge[1],edge[0])
         
     dot.render("static/execution_plan_interactive", format="svg", cleanup=True)
-    dot.render("execution_plan", format="png", cleanup=True)
+    dot.render("static/images/execution_plan", format="png", cleanup=True)
