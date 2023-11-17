@@ -3,6 +3,9 @@ import json
 import re
 import matplotlib.pyplot as plt
 import matplotlib
+import pandas as pd 
+import plotly.express as px 
+import plotly.graph_objects as go
 
 matplotlib.use(
     "Agg"
@@ -10,6 +13,8 @@ matplotlib.use(
 import io
 import base64
 import decimal
+
+from blockUtils import modify_query
 
 """ 
 Parent function to 
@@ -23,7 +28,7 @@ Other functions will inherit and use to get result.
 """
 
 # Takes in an argument input_json to format whether the EXPLAIN call needs to return in JSON format or not
-def dbquery(input,return_json=False, headers=False):
+def dbquery(input,return_json=False, headers=None):
     result = []
     try:
         # Note: Update these details as accordingly to your details
@@ -39,7 +44,7 @@ def dbquery(input,return_json=False, headers=False):
 
         # Execute the query
 
-        if headers :
+        if headers is not None:
             sql_command = headers + input
         else:
             if return_json:
@@ -52,16 +57,9 @@ def dbquery(input,return_json=False, headers=False):
 
         # Fetch the column names from the cursor description ,
         # 0 - name  ( From docs https://www.psycopg.org/docs/cursor.html)
-        # column_names = [desc[0] for desc in cursor.description]
+        global column_names
+        column_names = [desc[0] for desc in cursor.description]
 
-        # rows = cursor.fetchall()
-        # for row in rows:
-        #     row_dict = {}
-        #     for i in range(len(column_names)):
-        #         row_dict[column_names[i]] = row[i]
-        #     result.append(row_dict)
-
-        # Gets the json result of what actually happened
         result = cursor.fetchall()
 
     except (Exception, psycopg2.Error) as error:
@@ -133,6 +131,63 @@ def extract_result_times(input):
     return planning_time, execution_time, base64_image
 
 
+'''
+    Block Visualisation Function
+
+    Note : we get column names as a global variable retreived in dbquery function.
+'''
+# Original one, working for only one table.
+# def visualise_blocks(input):
+#     # Creating Dataframe from the result of user query
+#     modified_input = modify_query(input)
+#     print(f'Modified Input (database.py) : {modified_input}')
+#     result = dbquery(modified_input, False, headers="")
+#     # print(f'blocks.py: result: {result}')
+#     df = pd.DataFrame(result, columns = column_names)
+#     df.to_clipboard()
+#     print(f'\n Dataframe: {df}')
+
+    
+#     df['ctid'] = df['ctid'].str.replace('[()]', '', regex=True)
+#     df[['block_number', 'tuple_index']] = df['ctid'].str.split(',', expand=True)
+#     df_blocks = df[['block_number', 'tuple_index']]
+#     df_blocks = df_blocks.astype(int)
+#     blocks_accessed = df_blocks['block_number'].unique()
+#     tuples_accessed = df_blocks['tuple_index'].unique()    
+#     print('Blocks accessed:', blocks_accessed)
+#     print('Tuples accessed:', tuples_accessed)
+#     fig = px.scatter(df_blocks, x='block_number', y='tuple_index', facet_col="block_number", title='Blocks and Tuples Visualization')
+#     fig.show()  
+   
+def visualise_blocks(input):
+    modified_input, tableNames = modify_query(input)
+    print(f'Modified Input (database.py) : {modified_input}')
+    result = dbquery(modified_input, False, headers="")
+    # print(f'blocks.py: result: {result}')
+    df = pd.DataFrame(result, columns = column_names)
+    df.to_clipboard()
+    print(f'\n Dataframe: {df}')
+
+    
+    for table in tableNames:
+        df[f'{table}_ctid'] = df[f'{table}_ctid'].str.replace('[()]', '', regex=True)
+        df[['block_number', 'tuple_index']] = df[f'{table}_ctid'].str.split(',', expand=True)
+        df_blocks = df[['block_number', 'tuple_index']]
+        df_blocks = df_blocks.astype(int)
+        blocks_accessed = df_blocks['block_number'].unique()
+        tuples_accessed = df_blocks['tuple_index'].unique()    
+        print('Blocks accessed:', blocks_accessed)
+        print('Tuples accessed:', tuples_accessed)
+        fig = px.scatter(df_blocks, x='block_number', y='tuple_index', facet_col="block_number", title='Blocks and Tuples Visualization')
+        fig.show()  
+   
+
+
+
+
+
+
+    
 ''' 
 Util Function : Decimal Serializer ; To prevent errors caused by decimals
 '''
@@ -141,3 +196,9 @@ def decimal_default(obj):
     if isinstance(obj, decimal.Decimal):
         return float(obj)
     raise TypeError
+
+
+
+
+
+
