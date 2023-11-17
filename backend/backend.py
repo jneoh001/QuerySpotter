@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, jsonify
-from database import dbquery, extract_result_times
+from database import dbquery, extract_result_times, visualise_blocks
 from tree import tree
-from blocks import visualise_blocks
 import json
 
 app = Flask(__name__)
@@ -21,15 +20,14 @@ def query():
     #For Tree
     operations = tree(  dbquery(input_query,True) )
 
-    #For Blocks
+    # For blocks
     visualise_blocks(input_query)
-
     # For Planning vs Execution Time Graph
     planning_time , execution_time, base64_image = extract_result_times(input_query)
 
     # Debugging print statements 
     # print(f'Planning time: {planning_time} \n Execution time: {execution_time}')
-    print(f'\n Backend.py query results: {result}')
+    # print(f'\n Backend.py query results: {result}')
 
     return render_template('query.html', base64_image=base64_image, result=result, operations=operations)
 
