@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, send_from_directory, session
-from database import dbquery, extract_result_times, visualise_blocks_3d, query_analysis, visualise_blocks 
+from explore import dbquery, extract_result_times, visualise_blocks_3d, query_analysis, visualise_blocks 
 from tree import interactive_tree
 import json
 import dash
@@ -60,51 +60,5 @@ def show_graph():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-
-# #Dash stuff
-
-# # Create the Dash app with the existing Flask app instance
-# dash_app = dash.Dash(__name__, server=app, url_base_pathname='/dash/')
-
-# dash_app.layout = html.Div([
-#     dcc.Dropdown(
-#         id='block-dropdown',
-#         multi=True
-#     ),
-#     dcc.Graph(id='block-plot')
-# ])
-
-
-# Tried using dash
-
-# @app.callback(
-#     Output('block-plot', 'figure'),
-#     [Input('block-dropdown', 'value')]
-# )
-# def update_plot(selected_block_numbers):
-#     if not selected_block_numbers:
-#         raise PreventUpdate
-
-#     # Assuming you have a df_blocks DataFrame for block data
-#     df_blocks = visualise_blocks(input_query)
-
-#     df_blocks_filtered = df_blocks[df_blocks['block_number'].isin(selected_block_numbers)]
-
-#     blocks_accessed = df_blocks_filtered['block_number'].unique()
-#     tuples_accessed = df_blocks_filtered['tuple_index'].unique()
-    
-#     print('Blocks accessed:', blocks_accessed)
-#     print('Tuples accessed:', tuples_accessed)
-    
-#     fig = px.scatter(
-#         df_blocks_filtered,
-#         x='block_number',
-#         y='tuple_index',
-#         facet_col="block_number",
-#         title='Blocks and Tuples Visualization'
-#     )
-#     return fig
 
 
