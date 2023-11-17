@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, send_from_directory, session
-from database import dbquery, extract_result_times, visualise_blocks_3d, query_analysis
+from database import dbquery, extract_result_times, visualise_blocks_3d, query_analysis, visualise_blocks 
 from tree import interactive_tree
 import json
 import dash
@@ -22,6 +22,7 @@ def home():
 @app.route('/query',methods=['POST'])
 def query():
     input_query = request.form['queryInput']
+    input_query = input_query.replace('\r', '').replace('\n', ' ') # Clear up escape sequences.
     session['query'] = input_query # Need to store the user's input query as session to reuse in other routes.
     # For Plots 
     result = dbquery(input_query,True)
@@ -33,7 +34,7 @@ def query():
     # For blocks
     #visualise_blocks_3d(input_query)
 
-    #visualise_blocks(input_query)
+    visualise_blocks(input_query)
     # For Planning vs Execution Time Graph
     planning_time , execution_time, base64_image = extract_result_times(input_query)
 
@@ -50,11 +51,11 @@ def show_graph():
     return send_from_directory('static','images/execution_plan_interactive.svg')
 
 
-@app.route('/query/blocktuples')
-def blocktuples():
-    input_query = session.get('query')
-    figure_html = visualise_blocks_3d(input_query)
-    return render_template('blocktuples.html', figure_html=figure_html)
+# @app.route('/query/blocktuples')
+# def blocktuples():
+#     input_query = session.get('query')
+#     figure_html = visualise_blocks_3d(input_query)
+#     return render_template('blocktuples.html', figure_html=figure_html)
 
 
 if __name__ == '__main__':

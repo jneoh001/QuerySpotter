@@ -1,0 +1,24 @@
+// Query Plan
+digraph {
+	graph [rankdir=TB]
+	"Seq Scan_0_None_region_" [label="Seq Scan(region)" href="#" tooltip="Seq Scan
+Node Type: Seq Scan
+Relation Name: region
+Alias: region
+Startup Cost: 0.0
+Total Cost: 11.7
+Plan Rows: 170
+Plan Width: 430
+Actual Rows: 5
+Actual Loops: 1
+Shared Hit Blocks: 1
+Shared Read Blocks: 0
+Shared Dirtied Blocks: 0
+Shared Written Blocks: 0
+Local Hit Blocks: 0
+Local Read Blocks: 0
+Local Dirtied Blocks: 0
+Local Written Blocks: 0
+Temp Read Blocks: 0
+Temp Written Blocks: 0"]
+}

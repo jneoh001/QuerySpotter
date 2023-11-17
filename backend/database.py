@@ -36,10 +36,10 @@ def dbquery(input, return_json=False, headers=None):
         # Note: Update these details as accordingly to your details
         connection = psycopg2.connect(
             user="postgres",
-            password="Alphate217",
+            password="root",
             host="localhost",
             port="5432",
-            database="TPCH",
+            database="TPC-H",
         )
 
         cursor = connection.cursor()
@@ -240,10 +240,104 @@ def visualise_blocks(input):
             dimensions=["block_number", "tuple_index"],
             labels={"block_number": "Block Number", "tuple_index": "Tuple Index"},
         )
+        fig.update_layout(title=f"Scatter Matrix for {table}")
         fig.show()
 
     return df_blocks
 
+# Working but only for Customers , Not Orders. Not cummalative i think
+# def visualise_blocks_3d(input):
+#     modified_input, tableNames = modify_query(input)
+#     print(f"Modified Input (database.py): {modified_input}")
+#     result = dbquery(modified_input, False, headers="")
+#     df = pd.DataFrame(result, columns=column_names)
+#     df.to_clipboard()
+#     print(f"\nDataframe: {df}")
+
+#     for table in tableNames:
+#         table = table.strip()
+#         print(f'database.py: table in tablenames: {table}')
+#         df[f"{table}_ctid"] = df[f"{table}_ctid"].str.replace("[()]", "", regex=True)
+#         df[["block_number", "tuple_index"]] = df[f"{table}_ctid"].str.split(
+#             ",", expand=True
+#         )
+#         df_blocks = df[["block_number", "tuple_index"]]
+#         df_blocks = df_blocks.astype(int)
+
+#         # print(f"Df_blocks before dropping(db.py): {df_blocks}")
+#         df_blocks = df_blocks.drop_duplicates()
+#         # print(f"Df_blocks after dropping(db.py): {df_blocks}")
+#         # Use Plotly Express for 3D scatter plot
+#         fig = px.scatter_3d(
+#             df_blocks,
+#             x="block_number",
+#             y="tuple_index",
+#             z=df_blocks.index,
+#             labels={"block_number": "Block Number", "tuple_index": "Tuple Index"},
+#             title="3D Scatter Plot of Blocks and Tuples",
+#         )
+#         fig.update_layout(
+#             width=1000,
+#             height=1000,
+#         )
+#         fig.show()
+
+#         # WE save to HTML file rather than show
+#         figure_html = fig.to_html()
+#     return figure_html
+
+
+# Seesm to be cummalative but doesnt work
+# def visualise_blocks_3d(input):
+#     modified_input, tableNames = modify_query(input)
+#     print(f"Modified Input (database.py): {modified_input}")
+#     result = dbquery(modified_input, False, headers="")
+#     df = pd.DataFrame(result, columns=column_names)
+#     df.to_clipboard()
+#     print(f"\nDataframe: {df}")
+
+#     df_blocks = pd.DataFrame(columns=["block_number", "tuple_index"])
+
+#     for table in tableNames:
+#         table = table.strip()
+#         print(f'database.py: table in tablenames: {table}')
+#         df[f"{table}_ctid"] = df[f"{table}_ctid"].str.replace("[()]", "", regex=True)
+#         df[["block_number", "tuple_index"]] = df[f"{table}_ctid"].str.split(",", expand=True)
+#         df_current_blocks = df[["block_number", "tuple_index"]].astype(int)
+
+#         # Keep only the unique combinations that are not already in df_blocks
+#         df_current_blocks = df_current_blocks.drop_duplicates()
+#         df_current_blocks = df_current_blocks[~df_current_blocks.isin(df_blocks).all(axis=1)]
+
+#         df_blocks = pd.concat([df_blocks, df_current_blocks])
+
+#     df_blocks = df_blocks.drop_duplicates() # remove dupes 
+#     print(f"Df_blocks (db.py): {df_blocks}")
+    
+#     # Use Plotly Express for 3D scatter plot
+#     fig = px.scatter_3d(
+#         df_blocks,
+#         x="block_number",
+#         y="tuple_index",
+#         z=df_blocks.index,
+#         labels={"block_number": "Block Number", "tuple_index": "Tuple Index"},
+#         title="3D Scatter Plot of Blocks and Tuples",
+#         size_max=18,
+#         opacity=0.7,
+#     )
+#     fig.update_layout(
+#         width=1000,
+#         height=1000,
+#     )
+    
+#     # WE save to HTML file rather than show
+#     figure_html = fig.to_html()
+#     return figure_html
+
+
+
+
+""" try"""
 
 def visualise_blocks_3d(input):
     modified_input, tableNames = modify_query(input)
@@ -253,33 +347,49 @@ def visualise_blocks_3d(input):
     df.to_clipboard()
     print(f"\nDataframe: {df}")
 
+    df_blocks = pd.DataFrame(columns=["block_number", "tuple_index"])
+
     for table in tableNames:
+        table = table.lower()
         table = table.strip()
+        print(f'database.py: table in tablenames: {table}')
+        
+        # Extract block and tuple information for the current table
+        print(df.columns)
         df[f"{table}_ctid"] = df[f"{table}_ctid"].str.replace("[()]", "", regex=True)
-        df[["block_number", "tuple_index"]] = df[f"{table}_ctid"].str.split(
-            ",", expand=True
-        )
-        df_blocks = df[["block_number", "tuple_index"]]
-        df_blocks = df_blocks.astype(int)
+        df_current_blocks = df[f"{table}_ctid"].str.split(",", expand=True)
+        df_current_blocks.columns = ["block_number", "tuple_index"]
+        df_current_blocks = df_current_blocks.astype(int)
 
-        # Use Plotly Express for 3D scatter plot
-        fig = px.scatter_3d(
-            df_blocks,
-            x="block_number",
-            y="tuple_index",
-            z=df_blocks.index,
-            labels={"block_number": "Block Number", "tuple_index": "Tuple Index"},
-            title="3D Scatter Plot of Blocks and Tuples",
-        )
+        # Keep only the unique combinations that are not already in df_blocks
+        df_current_blocks = df_current_blocks.drop_duplicates()
+        df_current_blocks = df_current_blocks[~df_current_blocks.isin(df_blocks).all(axis=1)]
+        print(f'df_current_blocks (database.py): {df_current_blocks}')
 
-        fig.update_layout(
-            width=1000,
-            height=1000,
-        )
-        # fig.show()
+        df_blocks = pd.concat([df_blocks, df_current_blocks])
 
-        # WE save to HTML file rather than show
-        figure_html = fig.to_html()
+
+    df_blocks = df_blocks.drop_duplicates()  # remove dupes 
+    print(f"Df_blocks (db.py): {df_blocks}")
+
+    # Use Plotly Express for 3D scatter plot
+    fig = px.scatter_3d(
+        df_blocks,
+        x="block_number",
+        y="tuple_index",
+        z=df_blocks.index,
+        labels={"block_number": "Block Number", "tuple_index": "Tuple Index"},
+        title="3D Scatter Plot of Blocks and Tuples",
+        size_max=18,
+        opacity=0.7,
+    )
+    fig.update_layout(
+        width=1000,
+        height=1000,
+    )
+
+    # Save to HTML file rather than show
+    figure_html = fig.to_html()
     return figure_html
 
 
