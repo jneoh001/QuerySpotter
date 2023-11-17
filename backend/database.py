@@ -170,6 +170,7 @@ def visualise_blocks(input):
 
     
     for table in tableNames:
+        table = table.split()
         df[f'{table}_ctid'] = df[f'{table}_ctid'].str.replace('[()]', '', regex=True)
         df[['block_number', 'tuple_index']] = df[f'{table}_ctid'].str.split(',', expand=True)
         df_blocks = df[['block_number', 'tuple_index']]

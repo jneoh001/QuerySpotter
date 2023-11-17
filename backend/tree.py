@@ -5,6 +5,8 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import plotly.io as pio
 
+
+
 # Create a directed graph
 G = nx.DiGraph()
 G.graph['rankdir'] = 'TB'
@@ -34,7 +36,8 @@ def interactive_tree(input_json):
 
     # Add nodes recursively
     G.add_node(query_plan['Node Type'],label=query_plan['Node Type'])
-    add_nodes_edges(query_plan['Plans'][0],query_plan['Node Type'],relation_names={})
+    if 'Plans' in query_plan:
+        add_nodes_edges(query_plan['Plans'][0],query_plan['Node Type'],relation_names={})
 
     # Draw Directed graph
     pos = nx.circular_layout(G)
@@ -43,7 +46,7 @@ def interactive_tree(input_json):
     nx.draw_networkx_labels(G, pos, font_size=10, font_family='sans-serif')
     plt.show()
 
-    
+
     # Making it interactive using plotly
     pos = nx.circular_layout(G)
     edge_x = []
@@ -100,7 +103,9 @@ def interactive_tree(input_json):
         yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
     )
 
-    image_path = 'static/images/interactive_tree.png'
-    pio.write_image(fig, image_path,format='png')
+    fig.show()
 
-    return image_path
+    # image_path = 'static/images/interactive_tree.png'
+    # pio.write_image(fig, image_path,format='png')
+
+    # return image_path
