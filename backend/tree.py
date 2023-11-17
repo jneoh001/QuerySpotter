@@ -34,7 +34,10 @@ def interactive_tree(input_json):
 
     # Add nodes recursively
     G.add_node(query_plan['Node Type'],label=query_plan['Node Type'])
-    add_nodes_edges(query_plan['Plans'][0],query_plan['Node Type'],relation_names={})
+    if 'Plans' in query_plan:
+        add_nodes_edges(query_plan['Plans'][0],query_plan['Node Type'],relation_names={})
+
+
 
     # Draw Directed graph
     pos = nx.circular_layout(G)

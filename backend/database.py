@@ -3,8 +3,9 @@ import json
 import re
 import matplotlib.pyplot as plt
 import matplotlib
-import pandas as pd 
-import plotly.express as px 
+import pandas as pd
+import plotly.express as px
+import plotly.offline as pyo
 import plotly.graph_objects as go
 
 matplotlib.use(
@@ -27,14 +28,15 @@ headers : True if want to manually input headers
 Other functions will inherit and use to get result.
 """
 
+
 # Takes in an argument input_json to format whether the EXPLAIN call needs to return in JSON format or not
-def dbquery(input,return_json=False, headers=None):
+def dbquery(input, return_json=False, headers=None):
     result = []
     try:
         # Note: Update these details as accordingly to your details
         connection = psycopg2.connect(
             user="postgres",
-            password="Alphate217",
+            password="root",
             host="localhost",
             port="5432",
             database="TPC-H",
@@ -48,11 +50,10 @@ def dbquery(input,return_json=False, headers=None):
             sql_command = headers + input
         else:
             if return_json:
-                sql_command = 'EXPLAIN ( ANALYSE, BUFFERS, FORMAT JSON) ' + input
+                sql_command = "EXPLAIN ( ANALYSE, BUFFERS, FORMAT JSON) " + input
             else:
-                sql_command = 'EXPLAIN ( ANALYSE, BUFFERS, FORMAT TEXT) ' + input
-                
-            
+                sql_command = "EXPLAIN ( ANALYSE, BUFFERS, FORMAT TEXT) " + input
+
         cursor.execute(sql_command)
 
         # Fetch the column names from the cursor description ,
@@ -84,7 +85,7 @@ want from the QEP Analysis Query such as EXPLAIN / ANALYZE
 
 
 def extract_result_times(input):
-    result = dbquery(input,False)
+    result = dbquery(input, False)
     # print(f"extract_result_times query: {result}")
 
     planning_time = 0
@@ -111,8 +112,8 @@ def extract_result_times(input):
     # Extract the values from the result
     values = [planning_time, execution_time]
 
-    plt.clf() # We need this to clear the previous plot. Else, will have overlapping graphs
-    
+    plt.clf()  # We need this to clear the previous plot. Else, will have overlapping graphs
+
     plt.bar(["Planning Time", "Execution Time"], values)
     plt.xlabel("Time")
     plt.ylabel("Value")
@@ -120,7 +121,7 @@ def extract_result_times(input):
 
     # Annotations
     for i, value in enumerate(values):
-        plt.text(i, value, str(value), ha="center", va="bottom", color='red')
+        plt.text(i, value, str(value), ha="center", va="bottom", color="red")
 
     image_stream = io.BytesIO()
     plt.savefig(image_stream, format="png")
@@ -131,11 +132,11 @@ def extract_result_times(input):
     return planning_time, execution_time, base64_image
 
 
-'''
+"""
     Block Visualisation Function
 
     Note : we get column names as a global variable retreived in dbquery function.
-'''
+"""
 # Original one, working for only one table.
 # def visualise_blocks(input):
 #     # Creating Dataframe from the result of user query
@@ -147,58 +148,97 @@ def extract_result_times(input):
 #     df.to_clipboard()
 #     print(f'\n Dataframe: {df}')
 
-    
+
 #     df['ctid'] = df['ctid'].str.replace('[()]', '', regex=True)
 #     df[['block_number', 'tuple_index']] = df['ctid'].str.split(',', expand=True)
 #     df_blocks = df[['block_number', 'tuple_index']]
 #     df_blocks = df_blocks.astype(int)
 #     blocks_accessed = df_blocks['block_number'].unique()
-#     tuples_accessed = df_blocks['tuple_index'].unique()    
+#     tuples_accessed = df_blocks['tuple_index'].unique()
 #     print('Blocks accessed:', blocks_accessed)
 #     print('Tuples accessed:', tuples_accessed)
 #     fig = px.scatter(df_blocks, x='block_number', y='tuple_index', facet_col="block_number", title='Blocks and Tuples Visualization')
-#     fig.show()  
-   
+#     fig.show()
+
+
 def visualise_blocks(input):
     modified_input, tableNames = modify_query(input)
-    print(f'Modified Input (database.py) : {modified_input}')
+    print(f"Modified Input (database.py) : {modified_input}")
     result = dbquery(modified_input, False, headers="")
     # print(f'blocks.py: result: {result}')
-    df = pd.DataFrame(result, columns = column_names)
+    df = pd.DataFrame(result, columns=column_names)
     df.to_clipboard()
-    print(f'\n Dataframe: {df}')
+    # print(f"\n Dataframe: {df}")
 
-    
     for table in tableNames:
-        df[f'{table}_ctid'] = df[f'{table}_ctid'].str.replace('[()]', '', regex=True)
-        df[['block_number', 'tuple_index']] = df[f'{table}_ctid'].str.split(',', expand=True)
-        df_blocks = df[['block_number', 'tuple_index']]
+        table = table.strip()
+        df[f"{table}_ctid"] = df[f"{table}_ctid"].str.replace("[()]", "", regex=True)
+        df[["block_number", "tuple_index"]] = df[f"{table}_ctid"].str.split(
+            ",", expand=True
+        )
+        df_blocks = df[["block_number", "tuple_index"]]
         df_blocks = df_blocks.astype(int)
-        blocks_accessed = df_blocks['block_number'].unique()
-        tuples_accessed = df_blocks['tuple_index'].unique()    
-        print('Blocks accessed:', blocks_accessed)
-        print('Tuples accessed:', tuples_accessed)
-        fig = px.scatter(df_blocks, x='block_number', y='tuple_index', facet_col="block_number", title='Blocks and Tuples Visualization')
-        fig.show()  
-   
+        blocks_accessed = df_blocks["block_number"].unique()
+        tuples_accessed = df_blocks["tuple_index"].unique()
+        print("Blocks accessed:", blocks_accessed)
+        print("Tuples accessed:", tuples_accessed)
+
+        facet_col_spacing = 0.02
+        # Use Plotly Express for scatter plot matrix (2d)
+        fig = px.scatter_matrix(
+            df_blocks,
+            dimensions=["block_number", "tuple_index"],
+            labels={"block_number": "Block Number", "tuple_index": "Tuple Index"},
+        )
+        fig.show()
+
+    return df_blocks
 
 
+def visualise_blocks_3d(input):
+    modified_input, tableNames = modify_query(input)
+    print(f"Modified Input (database.py): {modified_input}")
+    result = dbquery(modified_input, False, headers="")
+    df = pd.DataFrame(result, columns=column_names)
+    df.to_clipboard()
+    print(f"\nDataframe: {df}")
+
+    for table in tableNames:
+        table = table.strip()
+        df[f"{table}_ctid"] = df[f"{table}_ctid"].str.replace("[()]", "", regex=True)
+        df[["block_number", "tuple_index"]] = df[f"{table}_ctid"].str.split(
+            ",", expand=True
+        )
+        df_blocks = df[["block_number", "tuple_index"]]
+        df_blocks = df_blocks.astype(int)
+
+        # Use Plotly Express for 3D scatter plot
+        fig = px.scatter_3d(
+            df_blocks,
+            x="block_number",
+            y="tuple_index",
+            z=df_blocks.index,
+            labels={"block_number": "Block Number", "tuple_index": "Tuple Index"},
+            title="3D Scatter Plot of Blocks and Tuples",
+        )
+
+        fig.update_layout(
+            width=1000,
+            height=1000,
+        )
+        # fig.show()
+
+        # WE save to HTML file rather than show
+        figure_html = fig.to_html()
+    return figure_html
 
 
-
-
-    
-''' 
+""" 
 Util Function : Decimal Serializer ; To prevent errors caused by decimals
-'''
+"""
+
 
 def decimal_default(obj):
     if isinstance(obj, decimal.Decimal):
         return float(obj)
     raise TypeError
-
-
-
-
-
-
