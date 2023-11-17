@@ -11,7 +11,7 @@
 <!-- Sort_0_None__ -->
 <g id="node1" class="node">
 <title>Sort_0_None__</title>
-<g id="a_node1"><a xlink:href="javascript:highlightNode(&#39;Sort_0_None__&#39;)" xlink:title="Sort&#10;Node Type: Sort&#10;Startup Cost: 48381.64&#10;Total Cost: 48385.14&#10;Plan Rows: 1401&#10;Plan Width: 36&#10;Actual Rows: 923&#10;Actual Loops: 1&#10;Sort Key: [&#39;(sum((partsupp.ps_supplycost * (partsupp.ps_availqty)::numeric))) DESC&#39;]&#10;Sort Method: quicksort&#10;Sort Space Used: 75&#10;Sort Space Type: Memory&#10;Shared Hit Blocks: 33300&#10;Shared Read Blocks: 3239&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
+<g id="a_node1"><a xlink:href="#" xlink:title="Sort&#10;Node Type: Sort&#10;Startup Cost: 48381.64&#10;Total Cost: 48385.14&#10;Plan Rows: 1401&#10;Plan Width: 36&#10;Actual Rows: 923&#10;Actual Loops: 1&#10;Sort Key: [&#39;(sum((partsupp.ps_supplycost * (partsupp.ps_availqty)::numeric))) DESC&#39;]&#10;Sort Method: quicksort&#10;Sort Space Used: 75&#10;Sort Space Type: Memory&#10;Shared Hit Blocks: 33303&#10;Shared Read Blocks: 3236&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
 <ellipse fill="none" stroke="black" cx="301" cy="-18" rx="27" ry="18"/>
 <text text-anchor="middle" x="301" y="-12.57" font-family="Times New Roman,serif" font-size="14.00">Sort</text>
 </a>
@@ -20,7 +20,7 @@
 <!-- Aggregate_1_0__Plain -->
 <g id="node2" class="node">
 <title>Aggregate_1_0__Plain</title>
-<g id="a_node2"><a xlink:href="javascript:highlightNode(&#39;Aggregate_1_0__Plain&#39;)" xlink:title="Aggregate&#10;Node Type: Aggregate&#10;Strategy: Plain&#10;Partial Mode: Finalize&#10;Parent Relationship: InitPlan&#10;Subplan Name: InitPlan 1 (returns $1)&#10;Startup Cost: 23430.64&#10;Total Cost: 23430.65&#10;Plan Rows: 1&#10;Plan Width: 32&#10;Actual Rows: 1&#10;Actual Loops: 1&#10;Shared Hit Blocks: 16666&#10;Shared Read Blocks: 1616&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
+<g id="a_node2"><a xlink:href="#" xlink:title="Aggregate&#10;Node Type: Aggregate&#10;Strategy: Plain&#10;Partial Mode: Finalize&#10;Parent Relationship: InitPlan&#10;Subplan Name: InitPlan 1 (returns $1)&#10;Startup Cost: 23430.64&#10;Total Cost: 23430.65&#10;Plan Rows: 1&#10;Plan Width: 32&#10;Actual Rows: 1&#10;Actual Loops: 1&#10;Shared Hit Blocks: 16664&#10;Shared Read Blocks: 1618&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
 <ellipse fill="none" stroke="black" cx="244" cy="-90" rx="48.07" ry="18"/>
 <text text-anchor="middle" x="244" y="-84.58" font-family="Times New Roman,serif" font-size="14.00">Aggregate</text>
 </a>
@@ -35,7 +35,7 @@
 <!-- Gather_2_0__ -->
 <g id="node3" class="node">
 <title>Gather_2_0__</title>
-<g id="a_node3"><a xlink:href="javascript:highlightNode(&#39;Gather_2_0__&#39;)" xlink:title="Gather&#10;Node Type: Gather&#10;Parent Relationship: Outer&#10;Startup Cost: 23430.41&#10;Total Cost: 23430.62&#10;Plan Rows: 2&#10;Plan Width: 32&#10;Actual Rows: 3&#10;Actual Loops: 1&#10;Workers Planned: 2&#10;Workers Launched: 2&#10;Single Copy: False&#10;Shared Hit Blocks: 16666&#10;Shared Read Blocks: 1616&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
+<g id="a_node3"><a xlink:href="#" xlink:title="Gather&#10;Node Type: Gather&#10;Parent Relationship: Outer&#10;Startup Cost: 23430.41&#10;Total Cost: 23430.62&#10;Plan Rows: 2&#10;Plan Width: 32&#10;Actual Rows: 3&#10;Actual Loops: 1&#10;Workers Planned: 2&#10;Workers Launched: 2&#10;Single Copy: False&#10;Shared Hit Blocks: 16664&#10;Shared Read Blocks: 1618&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
 <ellipse fill="none" stroke="black" cx="244" cy="-162" rx="35.6" ry="18"/>
 <text text-anchor="middle" x="244" y="-156.57" font-family="Times New Roman,serif" font-size="14.00">Gather</text>
 </a>
@@ -50,7 +50,7 @@
 <!-- Aggregate_3_0__Plain -->
 <g id="node4" class="node">
 <title>Aggregate_3_0__Plain</title>
-<g id="a_node4"><a xlink:href="javascript:highlightNode(&#39;Aggregate_3_0__Plain&#39;)" xlink:title="Aggregate&#10;Node Type: Aggregate&#10;Strategy: Plain&#10;Partial Mode: Partial&#10;Parent Relationship: Outer&#10;Startup Cost: 22430.41&#10;Total Cost: 22430.42&#10;Plan Rows: 1&#10;Plan Width: 32&#10;Actual Rows: 1&#10;Actual Loops: 3&#10;Shared Hit Blocks: 16666&#10;Shared Read Blocks: 1616&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
+<g id="a_node4"><a xlink:href="#" xlink:title="Aggregate&#10;Node Type: Aggregate&#10;Strategy: Plain&#10;Partial Mode: Partial&#10;Parent Relationship: Outer&#10;Startup Cost: 22430.41&#10;Total Cost: 22430.42&#10;Plan Rows: 1&#10;Plan Width: 32&#10;Actual Rows: 1&#10;Actual Loops: 3&#10;Shared Hit Blocks: 16664&#10;Shared Read Blocks: 1618&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
 <ellipse fill="none" stroke="black" cx="227" cy="-234" rx="48.07" ry="18"/>
 <text text-anchor="middle" x="227" y="-228.57" font-family="Times New Roman,serif" font-size="14.00">Aggregate</text>
 </a>
@@ -65,7 +65,7 @@
 <!-- Hash Join_4_0__ -->
 <g id="node5" class="node">
 <title>Hash Join_4_0__</title>
-<g id="a_node5"><a xlink:href="javascript:highlightNode(&#39;Hash Join_4_0__&#39;)" xlink:title="Hash Join&#10;Node Type: Hash Join&#10;Parent Relationship: Outer&#10;Join Type: Inner&#10;Startup Cost: 361.78&#10;Total Cost: 22415.7&#10;Plan Rows: 1961&#10;Plan Width: 10&#10;Actual Rows: 10560&#10;Actual Loops: 3&#10;Inner Unique: False&#10;Hash Cond: (partsupp_1.ps_suppkey = supplier_1.s_suppkey)&#10;Shared Hit Blocks: 16666&#10;Shared Read Blocks: 1616&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
+<g id="a_node5"><a xlink:href="#" xlink:title="Hash Join&#10;Node Type: Hash Join&#10;Parent Relationship: Outer&#10;Join Type: Inner&#10;Startup Cost: 361.78&#10;Total Cost: 22415.7&#10;Plan Rows: 1961&#10;Plan Width: 10&#10;Actual Rows: 10560&#10;Actual Loops: 3&#10;Inner Unique: False&#10;Hash Cond: (partsupp_1.ps_suppkey = supplier_1.s_suppkey)&#10;Shared Hit Blocks: 16664&#10;Shared Read Blocks: 1618&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
 <ellipse fill="none" stroke="black" cx="218" cy="-306" rx="47.07" ry="18"/>
 <text text-anchor="middle" x="218" y="-300.57" font-family="Times New Roman,serif" font-size="14.00">Hash Join</text>
 </a>
@@ -80,7 +80,7 @@
 <!-- Seq Scan_5_0_partsupp_1_ -->
 <g id="node6" class="node">
 <title>Seq Scan_5_0_partsupp_1_</title>
-<g id="a_node6"><a xlink:href="javascript:highlightNode(&#39;Seq Scan_5_0_partsupp_1_&#39;)" xlink:title="Seq Scan&#10;Node Type: Seq Scan&#10;Parent Relationship: Outer&#10;Relation Name: partsupp&#10;Alias: partsupp_1&#10;Startup Cost: 0.0&#10;Total Cost: 20784.33&#10;Plan Rows: 333333&#10;Plan Width: 14&#10;Actual Rows: 266667&#10;Actual Loops: 3&#10;Shared Hit Blocks: 15835&#10;Shared Read Blocks: 1616&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
+<g id="a_node6"><a xlink:href="#" xlink:title="Seq Scan&#10;Node Type: Seq Scan&#10;Parent Relationship: Outer&#10;Relation Name: partsupp&#10;Alias: partsupp_1&#10;Startup Cost: 0.0&#10;Total Cost: 20784.33&#10;Plan Rows: 333333&#10;Plan Width: 14&#10;Actual Rows: 266667&#10;Actual Loops: 3&#10;Shared Hit Blocks: 15833&#10;Shared Read Blocks: 1618&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
 <ellipse fill="none" stroke="black" cx="85" cy="-378" rx="85" ry="18"/>
 <text text-anchor="middle" x="85" y="-372.57" font-family="Times New Roman,serif" font-size="14.00">Seq Scan(partsupp)</text>
 </a>
@@ -95,7 +95,7 @@
 <!-- Hash_5_1__ -->
 <g id="node7" class="node">
 <title>Hash_5_1__</title>
-<g id="a_node7"><a xlink:href="javascript:highlightNode(&#39;Hash_5_1__&#39;)" xlink:title="Hash&#10;Node Type: Hash&#10;Parent Relationship: Inner&#10;Startup Cost: 361.04&#10;Total Cost: 361.04&#10;Plan Rows: 59&#10;Plan Width: 4&#10;Actual Rows: 396&#10;Actual Loops: 3&#10;Hash Buckets: 1024&#10;Original Hash Buckets: 1024&#10;Hash Batches: 1&#10;Original Hash Batches: 1&#10;Peak Memory Usage: 22&#10;Shared Hit Blocks: 669&#10;Shared Read Blocks: 0&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
+<g id="a_node7"><a xlink:href="#" xlink:title="Hash&#10;Node Type: Hash&#10;Parent Relationship: Inner&#10;Startup Cost: 361.04&#10;Total Cost: 361.04&#10;Plan Rows: 59&#10;Plan Width: 4&#10;Actual Rows: 396&#10;Actual Loops: 3&#10;Hash Buckets: 1024&#10;Original Hash Buckets: 1024&#10;Hash Batches: 1&#10;Original Hash Batches: 1&#10;Peak Memory Usage: 22&#10;Shared Hit Blocks: 669&#10;Shared Read Blocks: 0&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
 <ellipse fill="none" stroke="black" cx="218" cy="-378" rx="29.61" ry="18"/>
 <text text-anchor="middle" x="218" y="-372.57" font-family="Times New Roman,serif" font-size="14.00">Hash</text>
 </a>
@@ -110,7 +110,7 @@
 <!-- Hash Join_6_0__ -->
 <g id="node8" class="node">
 <title>Hash Join_6_0__</title>
-<g id="a_node8"><a xlink:href="javascript:highlightNode(&#39;Hash Join_6_0__&#39;)" xlink:title="Hash Join&#10;Node Type: Hash Join&#10;Parent Relationship: Outer&#10;Join Type: Inner&#10;Startup Cost: 12.14&#10;Total Cost: 361.04&#10;Plan Rows: 59&#10;Plan Width: 4&#10;Actual Rows: 396&#10;Actual Loops: 3&#10;Inner Unique: True&#10;Hash Cond: (supplier_1.s_nationkey = nation_1.n_nationkey)&#10;Shared Hit Blocks: 669&#10;Shared Read Blocks: 0&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
+<g id="a_node8"><a xlink:href="#" xlink:title="Hash Join&#10;Node Type: Hash Join&#10;Parent Relationship: Outer&#10;Join Type: Inner&#10;Startup Cost: 12.14&#10;Total Cost: 361.04&#10;Plan Rows: 59&#10;Plan Width: 4&#10;Actual Rows: 396&#10;Actual Loops: 3&#10;Inner Unique: True&#10;Hash Cond: (supplier_1.s_nationkey = nation_1.n_nationkey)&#10;Shared Hit Blocks: 669&#10;Shared Read Blocks: 0&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
 <ellipse fill="none" stroke="black" cx="217" cy="-450" rx="47.07" ry="18"/>
 <text text-anchor="middle" x="217" y="-444.57" font-family="Times New Roman,serif" font-size="14.00">Hash Join</text>
 </a>
@@ -125,7 +125,7 @@
 <!-- Seq Scan_7_0_supplier_1_ -->
 <g id="node9" class="node">
 <title>Seq Scan_7_0_supplier_1_</title>
-<g id="a_node9"><a xlink:href="javascript:highlightNode(&#39;Seq Scan_7_0_supplier_1_&#39;)" xlink:title="Seq Scan&#10;Node Type: Seq Scan&#10;Parent Relationship: Outer&#10;Relation Name: supplier&#10;Alias: supplier_1&#10;Startup Cost: 0.0&#10;Total Cost: 322.0&#10;Plan Rows: 10000&#10;Plan Width: 8&#10;Actual Rows: 10000&#10;Actual Loops: 3&#10;Shared Hit Blocks: 666&#10;Shared Read Blocks: 0&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
+<g id="a_node9"><a xlink:href="#" xlink:title="Seq Scan&#10;Node Type: Seq Scan&#10;Parent Relationship: Outer&#10;Relation Name: supplier&#10;Alias: supplier_1&#10;Startup Cost: 0.0&#10;Total Cost: 322.0&#10;Plan Rows: 10000&#10;Plan Width: 8&#10;Actual Rows: 10000&#10;Actual Loops: 3&#10;Shared Hit Blocks: 666&#10;Shared Read Blocks: 0&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
 <ellipse fill="none" stroke="black" cx="116" cy="-522" rx="81.5" ry="18"/>
 <text text-anchor="middle" x="116" y="-516.58" font-family="Times New Roman,serif" font-size="14.00">Seq Scan(supplier)</text>
 </a>
@@ -140,7 +140,7 @@
 <!-- Hash_7_1__ -->
 <g id="node10" class="node">
 <title>Hash_7_1__</title>
-<g id="a_node10"><a xlink:href="javascript:highlightNode(&#39;Hash_7_1__&#39;)" xlink:title="Hash&#10;Node Type: Hash&#10;Parent Relationship: Inner&#10;Startup Cost: 12.13&#10;Total Cost: 12.13&#10;Plan Rows: 1&#10;Plan Width: 4&#10;Actual Rows: 1&#10;Actual Loops: 3&#10;Hash Buckets: 1024&#10;Original Hash Buckets: 1024&#10;Hash Batches: 1&#10;Original Hash Batches: 1&#10;Peak Memory Usage: 9&#10;Shared Hit Blocks: 3&#10;Shared Read Blocks: 0&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
+<g id="a_node10"><a xlink:href="#" xlink:title="Hash&#10;Node Type: Hash&#10;Parent Relationship: Inner&#10;Startup Cost: 12.13&#10;Total Cost: 12.13&#10;Plan Rows: 1&#10;Plan Width: 4&#10;Actual Rows: 1&#10;Actual Loops: 3&#10;Hash Buckets: 1024&#10;Original Hash Buckets: 1024&#10;Hash Batches: 1&#10;Original Hash Batches: 1&#10;Peak Memory Usage: 9&#10;Shared Hit Blocks: 3&#10;Shared Read Blocks: 0&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
 <ellipse fill="none" stroke="black" cx="245" cy="-522" rx="29.61" ry="18"/>
 <text text-anchor="middle" x="245" y="-516.58" font-family="Times New Roman,serif" font-size="14.00">Hash</text>
 </a>
@@ -155,7 +155,7 @@
 <!-- Seq Scan_8_0_nation_1_ -->
 <g id="node11" class="node">
 <title>Seq Scan_8_0_nation_1_</title>
-<g id="a_node11"><a xlink:href="javascript:highlightNode(&#39;Seq Scan_8_0_nation_1_&#39;)" xlink:title="Seq Scan&#10;Node Type: Seq Scan&#10;Parent Relationship: Outer&#10;Relation Name: nation&#10;Alias: nation_1&#10;Startup Cost: 0.0&#10;Total Cost: 12.13&#10;Plan Rows: 1&#10;Plan Width: 4&#10;Actual Rows: 1&#10;Actual Loops: 3&#10;Filter: (n_name = &#39;GERMANY&#39;::bpchar)&#10;Rows Removed by Filter: 24&#10;Shared Hit Blocks: 3&#10;Shared Read Blocks: 0&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
+<g id="a_node11"><a xlink:href="#" xlink:title="Seq Scan&#10;Node Type: Seq Scan&#10;Parent Relationship: Outer&#10;Relation Name: nation&#10;Alias: nation_1&#10;Startup Cost: 0.0&#10;Total Cost: 12.13&#10;Plan Rows: 1&#10;Plan Width: 4&#10;Actual Rows: 1&#10;Actual Loops: 3&#10;Filter: (n_name = &#39;GERMANY&#39;::bpchar)&#10;Rows Removed by Filter: 24&#10;Shared Hit Blocks: 3&#10;Shared Read Blocks: 0&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
 <ellipse fill="none" stroke="black" cx="245" cy="-594" rx="74.52" ry="18"/>
 <text text-anchor="middle" x="245" y="-588.58" font-family="Times New Roman,serif" font-size="14.00">Seq Scan(nation)</text>
 </a>
@@ -170,7 +170,7 @@
 <!-- Aggregate_1_1__Sorted -->
 <g id="node12" class="node">
 <title>Aggregate_1_1__Sorted</title>
-<g id="a_node12"><a xlink:href="javascript:highlightNode(&#39;Aggregate_1_1__Sorted&#39;)" xlink:title="Aggregate&#10;Node Type: Aggregate&#10;Strategy: Sorted&#10;Partial Mode: Finalize&#10;Parent Relationship: Outer&#10;Startup Cost: 24340.48&#10;Total Cost: 24877.77&#10;Plan Rows: 1401&#10;Plan Width: 36&#10;Actual Rows: 923&#10;Actual Loops: 1&#10;Group Key: [&#39;partsupp.ps_partkey&#39;]&#10;Filter: (sum((partsupp.ps_supplycost * (partsupp.ps_availqty)::numeric)) &gt; $1)&#10;Rows Removed by Filter: 25388&#10;Shared Hit Blocks: 33297&#10;Shared Read Blocks: 3239&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
+<g id="a_node12"><a xlink:href="#" xlink:title="Aggregate&#10;Node Type: Aggregate&#10;Strategy: Sorted&#10;Partial Mode: Finalize&#10;Parent Relationship: Outer&#10;Startup Cost: 24340.48&#10;Total Cost: 24877.77&#10;Plan Rows: 1401&#10;Plan Width: 36&#10;Actual Rows: 923&#10;Actual Loops: 1&#10;Group Key: [&#39;partsupp.ps_partkey&#39;]&#10;Filter: (sum((partsupp.ps_supplycost * (partsupp.ps_availqty)::numeric)) &gt; $1)&#10;Rows Removed by Filter: 25388&#10;Shared Hit Blocks: 33300&#10;Shared Read Blocks: 3236&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
 <ellipse fill="none" stroke="black" cx="359" cy="-90" rx="48.07" ry="18"/>
 <text text-anchor="middle" x="359" y="-84.58" font-family="Times New Roman,serif" font-size="14.00">Aggregate</text>
 </a>
@@ -185,7 +185,7 @@
 <!-- Gather Merge_2_0__ -->
 <g id="node13" class="node">
 <title>Gather Merge_2_0__</title>
-<g id="a_node13"><a xlink:href="javascript:highlightNode(&#39;Gather Merge_2_0__&#39;)" xlink:title="Gather Merge&#10;Node Type: Gather Merge&#10;Parent Relationship: Outer&#10;Startup Cost: 24340.48&#10;Total Cost: 24788.48&#10;Plan Rows: 3502&#10;Plan Width: 36&#10;Actual Rows: 26319&#10;Actual Loops: 1&#10;Workers Planned: 2&#10;Workers Launched: 2&#10;Shared Hit Blocks: 16631&#10;Shared Read Blocks: 1623&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
+<g id="a_node13"><a xlink:href="#" xlink:title="Gather Merge&#10;Node Type: Gather Merge&#10;Parent Relationship: Outer&#10;Startup Cost: 24340.48&#10;Total Cost: 24788.48&#10;Plan Rows: 3502&#10;Plan Width: 36&#10;Actual Rows: 26319&#10;Actual Loops: 1&#10;Workers Planned: 2&#10;Workers Launched: 2&#10;Shared Hit Blocks: 16636&#10;Shared Read Blocks: 1618&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
 <ellipse fill="none" stroke="black" cx="361" cy="-162" rx="61.54" ry="18"/>
 <text text-anchor="middle" x="361" y="-156.57" font-family="Times New Roman,serif" font-size="14.00">Gather Merge</text>
 </a>
@@ -200,7 +200,7 @@
 <!-- Aggregate_3_0__Sorted -->
 <g id="node14" class="node">
 <title>Aggregate_3_0__Sorted</title>
-<g id="a_node14"><a xlink:href="javascript:highlightNode(&#39;Aggregate_3_0__Sorted&#39;)" xlink:title="Aggregate&#10;Node Type: Aggregate&#10;Strategy: Sorted&#10;Partial Mode: Partial&#10;Parent Relationship: Outer&#10;Startup Cost: 23340.46&#10;Total Cost: 23384.24&#10;Plan Rows: 1751&#10;Plan Width: 36&#10;Actual Rows: 8773&#10;Actual Loops: 3&#10;Group Key: [&#39;partsupp.ps_partkey&#39;]&#10;Shared Hit Blocks: 16631&#10;Shared Read Blocks: 1623&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
+<g id="a_node14"><a xlink:href="#" xlink:title="Aggregate&#10;Node Type: Aggregate&#10;Strategy: Sorted&#10;Partial Mode: Partial&#10;Parent Relationship: Outer&#10;Startup Cost: 23340.46&#10;Total Cost: 23384.24&#10;Plan Rows: 1751&#10;Plan Width: 36&#10;Actual Rows: 8773&#10;Actual Loops: 3&#10;Group Key: [&#39;partsupp.ps_partkey&#39;]&#10;Shared Hit Blocks: 16636&#10;Shared Read Blocks: 1618&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
 <ellipse fill="none" stroke="black" cx="362" cy="-234" rx="48.07" ry="18"/>
 <text text-anchor="middle" x="362" y="-228.57" font-family="Times New Roman,serif" font-size="14.00">Aggregate</text>
 </a>
@@ -215,7 +215,7 @@
 <!-- Sort_4_0__ -->
 <g id="node15" class="node">
 <title>Sort_4_0__</title>
-<g id="a_node15"><a xlink:href="javascript:highlightNode(&#39;Sort_4_0__&#39;)" xlink:title="Sort&#10;Node Type: Sort&#10;Parent Relationship: Outer&#10;Startup Cost: 23340.46&#10;Total Cost: 23344.84&#10;Plan Rows: 1751&#10;Plan Width: 14&#10;Actual Rows: 9262&#10;Actual Loops: 3&#10;Sort Key: [&#39;partsupp.ps_partkey&#39;]&#10;Sort Method: quicksort&#10;Sort Space Used: 1026&#10;Sort Space Type: Memory&#10;Shared Hit Blocks: 16631&#10;Shared Read Blocks: 1623&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
+<g id="a_node15"><a xlink:href="#" xlink:title="Sort&#10;Node Type: Sort&#10;Parent Relationship: Outer&#10;Startup Cost: 23340.46&#10;Total Cost: 23344.84&#10;Plan Rows: 1751&#10;Plan Width: 14&#10;Actual Rows: 9262&#10;Actual Loops: 3&#10;Sort Key: [&#39;partsupp.ps_partkey&#39;]&#10;Sort Method: quicksort&#10;Sort Space Used: 1018&#10;Sort Space Type: Memory&#10;Shared Hit Blocks: 16636&#10;Shared Read Blocks: 1618&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
 <ellipse fill="none" stroke="black" cx="363" cy="-306" rx="27" ry="18"/>
 <text text-anchor="middle" x="363" y="-300.57" font-family="Times New Roman,serif" font-size="14.00">Sort</text>
 </a>
@@ -230,7 +230,7 @@
 <!-- Hash Join_5_0__ -->
 <g id="node16" class="node">
 <title>Hash Join_5_0__</title>
-<g id="a_node16"><a xlink:href="javascript:highlightNode(&#39;Hash Join_5_0__&#39;)" xlink:title="Hash Join&#10;Node Type: Hash Join&#10;Parent Relationship: Outer&#10;Join Type: Inner&#10;Startup Cost: 384.3&#10;Total Cost: 23246.13&#10;Plan Rows: 1751&#10;Plan Width: 14&#10;Actual Rows: 9262&#10;Actual Loops: 3&#10;Inner Unique: False&#10;Hash Cond: (partsupp.ps_suppkey = supplier.s_suppkey)&#10;Shared Hit Blocks: 16519&#10;Shared Read Blocks: 1623&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
+<g id="a_node16"><a xlink:href="#" xlink:title="Hash Join&#10;Node Type: Hash Join&#10;Parent Relationship: Outer&#10;Join Type: Inner&#10;Startup Cost: 384.3&#10;Total Cost: 23246.13&#10;Plan Rows: 1751&#10;Plan Width: 14&#10;Actual Rows: 9262&#10;Actual Loops: 3&#10;Inner Unique: False&#10;Hash Cond: (partsupp.ps_suppkey = supplier.s_suppkey)&#10;Shared Hit Blocks: 16524&#10;Shared Read Blocks: 1618&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
 <ellipse fill="none" stroke="black" cx="367" cy="-378" rx="47.07" ry="18"/>
 <text text-anchor="middle" x="367" y="-372.57" font-family="Times New Roman,serif" font-size="14.00">Hash Join</text>
 </a>
@@ -245,7 +245,7 @@
 <!-- Seq Scan_6_0_partsupp_ -->
 <g id="node17" class="node">
 <title>Seq Scan_6_0_partsupp_</title>
-<g id="a_node17"><a xlink:href="javascript:highlightNode(&#39;Seq Scan_6_0_partsupp_&#39;)" xlink:title="Seq Scan&#10;Node Type: Seq Scan&#10;Parent Relationship: Outer&#10;Relation Name: partsupp&#10;Alias: partsupp&#10;Startup Cost: 0.0&#10;Total Cost: 21617.67&#10;Plan Rows: 327088&#10;Plan Width: 18&#10;Actual Rows: 261641&#10;Actual Loops: 3&#10;Filter: (ps_supplycost &gt; &#39;20&#39;::numeric)&#10;Rows Removed by Filter: 5026&#10;Shared Hit Blocks: 15828&#10;Shared Read Blocks: 1623&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
+<g id="a_node17"><a xlink:href="#" xlink:title="Seq Scan&#10;Node Type: Seq Scan&#10;Parent Relationship: Outer&#10;Relation Name: partsupp&#10;Alias: partsupp&#10;Startup Cost: 0.0&#10;Total Cost: 21617.67&#10;Plan Rows: 327088&#10;Plan Width: 18&#10;Actual Rows: 261641&#10;Actual Loops: 3&#10;Filter: (ps_supplycost &gt; &#39;20&#39;::numeric)&#10;Rows Removed by Filter: 5026&#10;Shared Hit Blocks: 15833&#10;Shared Read Blocks: 1618&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
 <ellipse fill="none" stroke="black" cx="367" cy="-450" rx="85" ry="18"/>
 <text text-anchor="middle" x="367" y="-444.57" font-family="Times New Roman,serif" font-size="14.00">Seq Scan(partsupp)</text>
 </a>
@@ -260,7 +260,7 @@
 <!-- Hash_6_1__ -->
 <g id="node18" class="node">
 <title>Hash_6_1__</title>
-<g id="a_node18"><a xlink:href="javascript:highlightNode(&#39;Hash_6_1__&#39;)" xlink:title="Hash&#10;Node Type: Hash&#10;Parent Relationship: Inner&#10;Startup Cost: 383.62&#10;Total Cost: 383.62&#10;Plan Rows: 54&#10;Plan Width: 4&#10;Actual Rows: 354&#10;Actual Loops: 3&#10;Hash Buckets: 1024&#10;Original Hash Buckets: 1024&#10;Hash Batches: 1&#10;Original Hash Batches: 1&#10;Peak Memory Usage: 21&#10;Shared Hit Blocks: 669&#10;Shared Read Blocks: 0&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
+<g id="a_node18"><a xlink:href="#" xlink:title="Hash&#10;Node Type: Hash&#10;Parent Relationship: Inner&#10;Startup Cost: 383.62&#10;Total Cost: 383.62&#10;Plan Rows: 54&#10;Plan Width: 4&#10;Actual Rows: 354&#10;Actual Loops: 3&#10;Hash Buckets: 1024&#10;Original Hash Buckets: 1024&#10;Hash Batches: 1&#10;Original Hash Batches: 1&#10;Peak Memory Usage: 21&#10;Shared Hit Blocks: 669&#10;Shared Read Blocks: 0&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
 <ellipse fill="none" stroke="black" cx="500" cy="-450" rx="29.61" ry="18"/>
 <text text-anchor="middle" x="500" y="-444.57" font-family="Times New Roman,serif" font-size="14.00">Hash</text>
 </a>
@@ -275,7 +275,7 @@
 <!-- Hash Join_7_0__ -->
 <g id="node19" class="node">
 <title>Hash Join_7_0__</title>
-<g id="a_node19"><a xlink:href="javascript:highlightNode(&#39;Hash Join_7_0__&#39;)" xlink:title="Hash Join&#10;Node Type: Hash Join&#10;Parent Relationship: Outer&#10;Join Type: Inner&#10;Startup Cost: 12.14&#10;Total Cost: 383.62&#10;Plan Rows: 54&#10;Plan Width: 4&#10;Actual Rows: 354&#10;Actual Loops: 3&#10;Inner Unique: True&#10;Hash Cond: (supplier.s_nationkey = nation.n_nationkey)&#10;Shared Hit Blocks: 669&#10;Shared Read Blocks: 0&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
+<g id="a_node19"><a xlink:href="#" xlink:title="Hash Join&#10;Node Type: Hash Join&#10;Parent Relationship: Outer&#10;Join Type: Inner&#10;Startup Cost: 12.14&#10;Total Cost: 383.62&#10;Plan Rows: 54&#10;Plan Width: 4&#10;Actual Rows: 354&#10;Actual Loops: 3&#10;Inner Unique: True&#10;Hash Cond: (supplier.s_nationkey = nation.n_nationkey)&#10;Shared Hit Blocks: 669&#10;Shared Read Blocks: 0&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
 <ellipse fill="none" stroke="black" cx="500" cy="-522" rx="47.07" ry="18"/>
 <text text-anchor="middle" x="500" y="-516.58" font-family="Times New Roman,serif" font-size="14.00">Hash Join</text>
 </a>
@@ -290,7 +290,7 @@
 <!-- Seq Scan_8_0_supplier_ -->
 <g id="node20" class="node">
 <title>Seq Scan_8_0_supplier_</title>
-<g id="a_node20"><a xlink:href="javascript:highlightNode(&#39;Seq Scan_8_0_supplier_&#39;)" xlink:title="Seq Scan&#10;Node Type: Seq Scan&#10;Parent Relationship: Outer&#10;Relation Name: supplier&#10;Alias: supplier&#10;Startup Cost: 0.0&#10;Total Cost: 347.0&#10;Plan Rows: 9099&#10;Plan Width: 8&#10;Actual Rows: 9094&#10;Actual Loops: 3&#10;Filter: (s_acctbal &gt; &#39;10&#39;::numeric)&#10;Rows Removed by Filter: 906&#10;Shared Hit Blocks: 666&#10;Shared Read Blocks: 0&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
+<g id="a_node20"><a xlink:href="#" xlink:title="Seq Scan&#10;Node Type: Seq Scan&#10;Parent Relationship: Outer&#10;Relation Name: supplier&#10;Alias: supplier&#10;Startup Cost: 0.0&#10;Total Cost: 347.0&#10;Plan Rows: 9099&#10;Plan Width: 8&#10;Actual Rows: 9094&#10;Actual Loops: 3&#10;Filter: (s_acctbal &gt; &#39;10&#39;::numeric)&#10;Rows Removed by Filter: 906&#10;Shared Hit Blocks: 666&#10;Shared Read Blocks: 0&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
 <ellipse fill="none" stroke="black" cx="473" cy="-594" rx="81.5" ry="18"/>
 <text text-anchor="middle" x="473" y="-588.58" font-family="Times New Roman,serif" font-size="14.00">Seq Scan(supplier)</text>
 </a>
@@ -305,7 +305,7 @@
 <!-- Hash_8_1__ -->
 <g id="node21" class="node">
 <title>Hash_8_1__</title>
-<g id="a_node21"><a xlink:href="javascript:highlightNode(&#39;Hash_8_1__&#39;)" xlink:title="Hash&#10;Node Type: Hash&#10;Parent Relationship: Inner&#10;Startup Cost: 12.13&#10;Total Cost: 12.13&#10;Plan Rows: 1&#10;Plan Width: 4&#10;Actual Rows: 1&#10;Actual Loops: 3&#10;Hash Buckets: 1024&#10;Original Hash Buckets: 1024&#10;Hash Batches: 1&#10;Original Hash Batches: 1&#10;Peak Memory Usage: 9&#10;Shared Hit Blocks: 3&#10;Shared Read Blocks: 0&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
+<g id="a_node21"><a xlink:href="#" xlink:title="Hash&#10;Node Type: Hash&#10;Parent Relationship: Inner&#10;Startup Cost: 12.13&#10;Total Cost: 12.13&#10;Plan Rows: 1&#10;Plan Width: 4&#10;Actual Rows: 1&#10;Actual Loops: 3&#10;Hash Buckets: 1024&#10;Original Hash Buckets: 1024&#10;Hash Batches: 1&#10;Original Hash Batches: 1&#10;Peak Memory Usage: 9&#10;Shared Hit Blocks: 3&#10;Shared Read Blocks: 0&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
 <ellipse fill="none" stroke="black" cx="602" cy="-594" rx="29.61" ry="18"/>
 <text text-anchor="middle" x="602" y="-588.58" font-family="Times New Roman,serif" font-size="14.00">Hash</text>
 </a>
@@ -320,7 +320,7 @@
 <!-- Seq Scan_9_0_nation_ -->
 <g id="node22" class="node">
 <title>Seq Scan_9_0_nation_</title>
-<g id="a_node22"><a xlink:href="javascript:highlightNode(&#39;Seq Scan_9_0_nation_&#39;)" xlink:title="Seq Scan&#10;Node Type: Seq Scan&#10;Parent Relationship: Outer&#10;Relation Name: nation&#10;Alias: nation&#10;Startup Cost: 0.0&#10;Total Cost: 12.13&#10;Plan Rows: 1&#10;Plan Width: 4&#10;Actual Rows: 1&#10;Actual Loops: 3&#10;Filter: (n_name = &#39;GERMANY&#39;::bpchar)&#10;Rows Removed by Filter: 24&#10;Shared Hit Blocks: 3&#10;Shared Read Blocks: 0&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
+<g id="a_node22"><a xlink:href="#" xlink:title="Seq Scan&#10;Node Type: Seq Scan&#10;Parent Relationship: Outer&#10;Relation Name: nation&#10;Alias: nation&#10;Startup Cost: 0.0&#10;Total Cost: 12.13&#10;Plan Rows: 1&#10;Plan Width: 4&#10;Actual Rows: 1&#10;Actual Loops: 3&#10;Filter: (n_name = &#39;GERMANY&#39;::bpchar)&#10;Rows Removed by Filter: 24&#10;Shared Hit Blocks: 3&#10;Shared Read Blocks: 0&#10;Shared Dirtied Blocks: 0&#10;Shared Written Blocks: 0&#10;Local Hit Blocks: 0&#10;Local Read Blocks: 0&#10;Local Dirtied Blocks: 0&#10;Local Written Blocks: 0&#10;Temp Read Blocks: 0&#10;Temp Written Blocks: 0">
 <ellipse fill="none" stroke="black" cx="602" cy="-666" rx="74.52" ry="18"/>
 <text text-anchor="middle" x="602" y="-660.58" font-family="Times New Roman,serif" font-size="14.00">Seq Scan(nation)</text>
 </a>

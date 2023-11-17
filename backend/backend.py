@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, send_from_directory, session
-from database import dbquery, extract_result_times, visualise_blocks_3d
+from database import dbquery, extract_result_times, visualise_blocks_3d, query_analysis
 from tree import interactive_tree
 import json
 import dash
@@ -29,7 +29,7 @@ def query():
     
     #For Tree
     interactive_tree(result)
-
+    base64_analysis = query_analysis(result)
     # For blocks
     #visualise_blocks_3d(input_query)
 
@@ -37,11 +37,13 @@ def query():
     # For Planning vs Execution Time Graph
     planning_time , execution_time, base64_image = extract_result_times(input_query)
 
+    # For query analysis
+    
     # Debugging print statements 
     # print(f'Planning time: {planning_time} \n Execution time: {execution_time}')
     # print(f'\n Backend.py query results: {result}')
 
-    return render_template('query.html', base64_image=base64_image, result=result)
+    return render_template('query.html', base64_image=base64_image, base64_analysis=base64_analysis)
 
 @app.route('/query/graph',methods=['GET'])
 def show_graph():

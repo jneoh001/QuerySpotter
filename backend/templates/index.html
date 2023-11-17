@@ -2,164 +2,170 @@
 content %}
 
 <h1>Welcome to Query Spotter</h1>
+<h3>Database Schema (db used: TPCH)</h3>
 <div class="container text-start">
-  <div class="col-4">
-    <h3>Database Schema (db used: TPCH)</h3>
-    <p class="d-inline-flex gap-1">
-      <!--Customer-->
-      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">cutomer</button>
-      <div class="col">
-        <div class="collapse multi-collapse" id="multiCollapseExample2">
-          <div class="card card-body">
-            <p>c_custkey (Primary Key)</p>
-            <p>c_name</p>
-            <p>c_address</p>
-            <p>c_nationkey</p>
-            <p>c_phone</p>
-            <p>c_acctbal</p>
-            <p>c_mktsegment</p>
-            <p>c_comment</p>
-          </div>
+  <div class="row">
+    <div class="col-4">
+      <form method="POST" action="/query">
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1">Type Query</label>
+          <textarea
+            name = 'queryInput'
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+            cols="10"
+            placeholder="Enter your SQL query here"
+          ></textarea>
         </div>
-      </div>
-    </p>
-    <!--Nation-->
-    <p class="d-inline-flex gap-1">
-      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#nationCollapse" aria-expanded="false" aria-controls="nationCollapse">Nation</button>
-      <div class="col">
-        <div class="collapse multi-collapse" id="nationCollapse">
-          <div class="card card-body">
-            <p>n_nationkey (Primary Key)</p>
-            <p>n_name</p>
-            <p>n_regionkey</p>
-            <p>n_comment</p>
+        <button id="btnFetch" type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <div class="col-8">
+      <div class="row">
+        <p class="d-inline-flex gap-1">
+          <!--Customer-->
+          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">cutomer</button>
+          <div class="col">
+            <div class="collapse multi-collapse" id="multiCollapseExample2">
+              <div class="card card-body">
+                <p>c_custkey (Primary Key)</p>
+                <p>c_name</p>
+                <p>c_address</p>
+                <p>c_nationkey</p>
+                <p>c_phone</p>
+                <p>c_acctbal</p>
+                <p>c_mktsegment</p>
+                <p>c_comment</p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </p>
-    <p class="d-inline-flex gap-1">
-      <!-- Orders -->
-      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#ordersCollapse" aria-expanded="false" aria-controls="ordersCollapse">Orders</button>
-      <div class="col">
-        <div class="collapse multi-collapse" id="ordersCollapse">
-          <div class="card card-body">
-            <p>o_orderkey (Primary Key)</p>
-            <p>o_custkey</p>
-            <p>o_orderstatus</p>
-            <p>o_totalprice</p>
-            <p>o_orderdate</p>
-            <p>o_orderpriority</p>
-            <p>o_clerk</p>
-            <p>o_shippriority</p>
-            <p>o_comment</p>
+        </p>
+        <!--Nation-->
+        <p class="d-inline-flex gap-1">
+          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#nationCollapse" aria-expanded="false" aria-controls="nationCollapse">Nation</button>
+          <div class="col">
+            <div class="collapse multi-collapse" id="nationCollapse">
+              <div class="card card-body">
+                <p>n_nationkey (Primary Key)</p>
+                <p>n_name</p>
+                <p>n_regionkey</p>
+                <p>n_comment</p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </p>
-    <p class="d-inline-flex gap-1">
-      <!-- Lineitem -->
-      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#lineitemCollapse" aria-expanded="false" aria-controls="lineitemCollapse">Lineitem</button>
-      <div class="col">
-        <div class="collapse multi-collapse" id="lineitemCollapse">
-          <div class="card card-body">
-            <p>l_orderkey</p>
-            <p>l_partkey</p>
-            <p>l_suppkey</p>
-            <p>l_linenumber (Primary Key)</p>
-            <p>l_quantity</p>
-            <p>l_extendedprice</p>
-            <p>l_discount</p>
-            <p>l_tax</p>
-            <p>l_returnflag</p>
-            <p>l_linestatus</p>
-            <p>l_shipdate</p>
-            <p>l_commitdate</p>
-            <p>l_receiptdate</p>
-            <p>l_shipinstruct</p>
-            <p>l_shipmode</p>
-            <p>l_comment</p>
+        </p>
+        <p class="d-inline-flex gap-1">
+          <!-- Orders -->
+          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#ordersCollapse" aria-expanded="false" aria-controls="ordersCollapse">Orders</button>
+          <div class="col">
+            <div class="collapse multi-collapse" id="ordersCollapse">
+              <div class="card card-body">
+                <p>o_orderkey (Primary Key)</p>
+                <p>o_custkey</p>
+                <p>o_orderstatus</p>
+                <p>o_totalprice</p>
+                <p>o_orderdate</p>
+                <p>o_orderpriority</p>
+                <p>o_clerk</p>
+                <p>o_shippriority</p>
+                <p>o_comment</p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </p>
-    <p class="d-inline-flex gap-1">
-      <!-- Part -->
-      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#partCollapse" aria-expanded="false" aria-controls="partCollapse">Part</button>
-      <div class="col">
-        <div class="collapse multi-collapse" id="partCollapse">
-          <div class="card card-body">
-            <p>p_partkey (Primary Key)</p>
-            <p>p_name</p>
-            <p>p_mfgr</p>
-            <p>p_brand</p>
-            <p>p_type</p>
-            <p>p_size</p>
-            <p>p_container</p>
-            <p>p_retailprice</p>
-            <p>p_comment</p>
+        </p>
+        <p class="d-inline-flex gap-1">
+          <!-- Lineitem -->
+          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#lineitemCollapse" aria-expanded="false" aria-controls="lineitemCollapse">Lineitem</button>
+          <div class="col">
+            <div class="collapse multi-collapse" id="lineitemCollapse">
+              <div class="card card-body">
+                <p>l_orderkey</p>
+                <p>l_partkey</p>
+                <p>l_suppkey</p>
+                <p>l_linenumber (Primary Key)</p>
+                <p>l_quantity</p>
+                <p>l_extendedprice</p>
+                <p>l_discount</p>
+                <p>l_tax</p>
+                <p>l_returnflag</p>
+                <p>l_linestatus</p>
+                <p>l_shipdate</p>
+                <p>l_commitdate</p>
+                <p>l_receiptdate</p>
+                <p>l_shipinstruct</p>
+                <p>l_shipmode</p>
+                <p>l_comment</p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </p>
-    <p class="d-inline-flex gap-1">
-      <!-- Supplier -->
-      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#supplierCollapse" aria-expanded="false" aria-controls="supplierCollapse">Supplier</button>
-      <div class="col">
-        <div class="collapse multi-collapse" id="supplierCollapse">
-          <div class="card card-body">
-            <p>s_suppkey (Primary Key)</p>
-            <p>s_name</p>
-            <p>s_address</p>
-            <p>s_nationkey</p>
-            <p>s_phone</p>
-            <p>s_acctbal</p>
-            <p>s_comment</p>
+        </p>
+        <p class="d-inline-flex gap-1">
+          <!-- Part -->
+          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#partCollapse" aria-expanded="false" aria-controls="partCollapse">Part</button>
+          <div class="col">
+            <div class="collapse multi-collapse" id="partCollapse">
+              <div class="card card-body">
+                <p>p_partkey (Primary Key)</p>
+                <p>p_name</p>
+                <p>p_mfgr</p>
+                <p>p_brand</p>
+                <p>p_type</p>
+                <p>p_size</p>
+                <p>p_container</p>
+                <p>p_retailprice</p>
+                <p>p_comment</p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </p>
-    <p class="d-inline-flex gap-1">
-      <!-- Partsupp -->
-      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#partsuppCollapse" aria-expanded="false" aria-controls="partsuppCollapse">Partsupp</button>
-      <div class="col">
-        <div class="collapse multi-collapse" id="partsuppCollapse">
-          <div class="card card-body">
-            <p>ps_partkey</p>
-            <p>ps_suppkey</p>
-            <p>ps_availqty</p>
-            <p>ps_supplycost</p>
-            <p>ps_comment</p>
+        </p>
+        <p class="d-inline-flex gap-1">
+          <!-- Supplier -->
+          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#supplierCollapse" aria-expanded="false" aria-controls="supplierCollapse">Supplier</button>
+          <div class="col">
+            <div class="collapse multi-collapse" id="supplierCollapse">
+              <div class="card card-body">
+                <p>s_suppkey (Primary Key)</p>
+                <p>s_name</p>
+                <p>s_address</p>
+                <p>s_nationkey</p>
+                <p>s_phone</p>
+                <p>s_acctbal</p>
+                <p>s_comment</p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </p>
-    <p class="d-inline-flex gap-1">
-      <!-- Region -->
-      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#regionCollapse" aria-expanded="false" aria-controls="regionCollapse">Region</button>
-      <div class="col">
-        <div class="collapse multi-collapse" id="regionCollapse">
-          <div class="card card-body">
-            <p>r_regionkey (Primary Key)</p>
-            <p>r_name</p>
-            <p>r_comment</p>
+        </p>
+        <p class="d-inline-flex gap-1">
+          <!-- Partsupp -->
+          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#partsuppCollapse" aria-expanded="false" aria-controls="partsuppCollapse">Partsupp</button>
+          <div class="col">
+            <div class="collapse multi-collapse" id="partsuppCollapse">
+              <div class="card card-body">
+                <p>ps_partkey</p>
+                <p>ps_suppkey</p>
+                <p>ps_availqty</p>
+                <p>ps_supplycost</p>
+                <p>ps_comment</p>
+              </div>
+            </div>
           </div>
-        </div>
+        </p>
+        <p class="d-inline-flex gap-1">
+          <!-- Region -->
+          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#regionCollapse" aria-expanded="false" aria-controls="regionCollapse">Region</button>
+          <div class="col">
+            <div class="collapse multi-collapse" id="regionCollapse">
+              <div class="card card-body">
+                <p>r_regionkey (Primary Key)</p>
+                <p>r_name</p>
+                <p>r_comment</p>
+              </div>
+            </div>
+          </div>
+        </p>
       </div>
-    </p>
-    <form method="POST" action="/query">
-      <div class="mb-3">
-        <label for="exampleFormControlTextarea1">Type Query</label>
-        <textarea
-          name = 'queryInput'
-          class="form-control"
-          id="exampleFormControlTextarea1"
-          rows="3"
-          cols="10"
-          placeholder="Enter your SQL query here"
-        ></textarea>
-      </div>
-      <button id="btnFetch" type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
   </div>
 </div>
 

@@ -131,7 +131,57 @@ def extract_result_times(input):
 
     return planning_time, execution_time, base64_image
 
+def query_analysis(input_json):
+    result = json.loads(input_json)
+    query_plan = result['Plan']
 
+    nodes = []
+    shared_blocks_hit = []
+    shared_blocks_read = []
+
+    def extract_data(plan):
+        nodes.append(plan['Node Type'])
+        shared_blocks_hit.append(plan.get('Shared Hit Blocks', 0))
+        shared_blocks_read.append(plan.get('Shared Read Blocks', 0))
+
+        if 'Plans' in plan:
+            for child in plan['Plans']:
+                extract_data(child)
+
+    extract_data(query_plan)
+
+    # Plotting
+    fig, ax = plt.subplots(figsize=(10,6))
+    bar_width = 0.35
+    index = range(len(nodes))
+
+    bars_hit = plt.barh(index, shared_blocks_hit, bar_width, label='Shared Blocks Hit', color='b')
+    bars_read = plt.barh([i + bar_width for i in index], shared_blocks_read, bar_width, label='Shared Blocks Read', color='g')
+
+    plt.ylabel('Node Type')
+    plt.xlabel('Number of Blocks')
+    plt.title('Shared Blocks Hit and Read for Each Node Type')
+    plt.yticks([i + bar_width/2 for i in index], nodes)
+    plt.legend()
+
+    # Display values on the right of the bars
+    for bar in bars_hit:
+        xval = bar.get_width()
+        plt.text(xval, bar.get_y() + bar_width/2, round(xval, 2), ha='left', va='center', color='red')
+
+    for bar in bars_read:
+        xval = bar.get_width()
+        plt.text(xval, bar.get_y() + bar_width/2, round(xval, 2), ha='left', va='center', color='red')
+
+    plt.tight_layout()
+    
+    image_stream = io.BytesIO()
+    plt.savefig(image_stream, format="png")
+    image_stream.seek(0)
+
+    base64_image = base64.b64encode(image_stream.read()).decode("utf-8")
+
+    return base64_image
 """
     Block Visualisation Function
 

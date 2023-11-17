@@ -5,6 +5,8 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import plotly.io as pio
 import graphviz
+import io
+import base64
 
 
 # Create a directed graph
@@ -17,10 +19,7 @@ def add_nodes_edges(plan,parent=None,depth=0,unique_id=None):
     label = f"{node_id}\n"
     label += "\n".join([f"{key}: {value}" for key, value in plan.items() if key != 'Plans' and key != 'Parallel Aware' and key != 'Async Capable' and key != 'Actual Startup Time' and key!='Actual Total Time' and key != 'Workers'])
 
-    # Choose a color based on the node type
-    color = choose_color_based_on_node_type(node_id)
-
-    G.add_node(node_identifier, label=f"{node_id}{'('+plan.get('Relation Name', '')+')' if len(plan.get('Relation Name',''))>0 else ''}",depth=depth,title=label,color=color)
+    G.add_node(node_identifier, label=f"{node_id}{'('+plan.get('Relation Name', '')+')' if len(plan.get('Relation Name',''))>0 else ''}",depth=depth,title=label)
     
     if parent is not None:
         G.add_edge(parent,node_identifier)
@@ -36,8 +35,6 @@ def interactive_tree(input_json):
     add_nodes_edges(query_plan)
     dot = graphviz.Digraph(comment='Query Plan',graph_attr={'rankdir':'TB'})
     for node, attrs in G.nodes(data=True):
-        print(node)
-        print(attrs)
         try:
             dot.node(node, attrs['label'], tooltip=attrs['title'],href=f"#")
         except:

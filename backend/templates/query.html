@@ -2,23 +2,25 @@
 {%block content %}
 
 <h1>Query Visualisation Dashbord</h1>
+<div class="description">
+  <p>This is the dashboard where you can see the different visualizations. The one on the left is a Planning vs Execution Time graph. It compares the two times to show that execution time is almost always significantly higher than the planning time.</p>
+  <p>The graph below the time graph is a bar plot of the shared block hits and read for different nodes in the Query Execution Plan Tree which is beside the bar plot.</p>
+  <p>Lastly, below is the Queryu Execution Plan Tree. As you can see, it shows the flow of how the query is executed and which tables where scanned as well. To know more about eah operation. You can click on the image which will bring you to s different tab and u can hover over the nodes to know more information about each node.</p>
+</div>
 <main class="queryWrapper">
   <div class="timeGraph">
     <img src="data:image/png;base64,{{ base64_image }}" alt="Time Plot" />
   </div>
-  
+  <!--Raw results here-->
+  <div class="rawResults">
+    <img src="data:image/png;base64,{{ base64_analysis }}" alt="Analysis" />
+  </div>
   <div class="operations">
-    <h2><u>Query Execution Plan </u></h2>
+    <h2><u>Query Execution Plan</u></h2>
     <a href="/query/graph">
       <img src="{{ url_for('static', filename='images/execution_plan.png') }}" alt="Interactive Graph" width="600" height="600">
     </a>
   </div>
-  <!--Raw results here-->
-  <div class="rawResults">
-    <h2><u> Raw Results From Query: </u></h2>
-    <p>{{result}}</p>
-  </div>
-
 </main>
 
 {% endblock %}
