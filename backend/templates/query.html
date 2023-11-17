@@ -6,17 +6,17 @@
   <div class="timeGraph">
     <img src="data:image/png;base64,{{ base64_image }}" alt="Time Plot" />
   </div>
-
+  
+  <div class="operations">
+    <h2><u>Query Execution Plan </u></h2>
+    <img src="{{ url_for('static', filename='images/interactive_tree.png') }}" alt="Interactive Graph">
+  </div>
   <!--Raw results here-->
   <div class="rawResults">
     <h2><u> Raw Results From Query: </u></h2>
     <p>{{result}}</p>
   </div>
 
-  <div class="operations">
-    <h2><u> Operations Results</u></h2>
-    <p>{{operations}}</p>
-  </div>
 </main>
 
 {% endblock %}
