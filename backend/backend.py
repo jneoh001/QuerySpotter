@@ -44,8 +44,8 @@ def query():
     return render_template('query.html', base64_image=base64_image, result=result)
 
 @app.route('/query/graph',methods=['GET'])
-def shopw_graph():
-    return send_from_directory('static','execution_plan_interactive.svg')
+def show_graph():
+    return send_from_directory('static','images/execution_plan_interactive.svg')
 
 
 @app.route('/query/blocktuples')

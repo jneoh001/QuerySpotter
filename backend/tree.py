@@ -17,7 +17,10 @@ def add_nodes_edges(plan,parent=None,depth=0,unique_id=None):
     label = f"{node_id}\n"
     label += "\n".join([f"{key}: {value}" for key, value in plan.items() if key != 'Plans' and key != 'Parallel Aware' and key != 'Async Capable' and key != 'Actual Startup Time' and key!='Actual Total Time' and key != 'Workers'])
 
-    G.add_node(node_identifier, label=f"{node_id}{'('+plan.get('Relation Name', '')+')' if len(plan.get('Relation Name',''))>0 else ''}",depth=depth,title=label)
+    # Choose a color based on the node type
+    color = choose_color_based_on_node_type(node_id)
+
+    G.add_node(node_identifier, label=f"{node_id}{'('+plan.get('Relation Name', '')+')' if len(plan.get('Relation Name',''))>0 else ''}",depth=depth,title=label,color=color)
     
     if parent is not None:
         G.add_edge(parent,node_identifier)
@@ -36,12 +39,12 @@ def interactive_tree(input_json):
         print(node)
         print(attrs)
         try:
-            dot.node(node, attrs['label'], tooltip=attrs['title'],href='#')
+            dot.node(node, attrs['label'], tooltip=attrs['title'],href=f"#")
         except:
             dot.node(node)
 
     for edge in G.edges():
         dot.edge(edge[1],edge[0])
         
-    dot.render("static/execution_plan_interactive", format="svg", cleanup=True)
+    dot.render("static/images/execution_plan_interactive", format="svg", cleanup=True)
     dot.render("static/images/execution_plan", format="png", cleanup=True)
