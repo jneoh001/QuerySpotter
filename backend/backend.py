@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, session
+from flask import Flask, render_template, request, send_from_directory, session
 from database import dbquery, extract_result_times, visualise_blocks_3d
 from tree import interactive_tree
 import json
@@ -28,11 +28,12 @@ def query():
     result = json.dumps(result[0][0][0]) # Access down to the JSON level. 
     
     #For Tree
-    image_path = interactive_tree(result)
+    interactive_tree(result)
 
     # For blocks
     visualise_blocks_3d(input_query)
 
+    #visualise_blocks(input_query)
     # For Planning vs Execution Time Graph
     planning_time , execution_time, base64_image = extract_result_times(input_query)
 
@@ -40,7 +41,27 @@ def query():
     # print(f'Planning time: {planning_time} \n Execution time: {execution_time}')
     # print(f'\n Backend.py query results: {result}')
 
-    return render_template('query.html', base64_image=base64_image, result=result,image_path=image_path)
+    return render_template('query.html', base64_image=base64_image, result=result)
+
+@app.route('/query/graph',methods=['GET'])
+def shopw_graph():
+    return send_from_directory('static','execution_plan_interactive.svg')
+
+
+@app.route('/query/blocktuples')
+def blocktuples():
+    input_query = session.get('query')
+    figure_html = visualise_blocks_3d(input_query)
+    return render_template('blocktuples.html', figure_html=figure_html)
+
+
+
+
+
+
+
+
+
 
 
 @app.route('/query/blocktuples')
