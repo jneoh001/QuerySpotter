@@ -39,7 +39,7 @@ def dbquery(input, return_json=False, headers=None):
             password="root",
             host="localhost",
             port="5432",
-            database="TPC-H",
+            database="TPCH",
         )
 
         cursor = connection.cursor()

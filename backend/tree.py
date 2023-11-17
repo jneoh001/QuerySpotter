@@ -10,37 +10,35 @@ import graphviz
 # Create a directed graph
 G = nx.DiGraph()
 
-def add_nodes_edges(plan,parent=None,relation_names=None,depth=0):
+def add_nodes_edges(plan,parent=None,depth=0,unique_id=None):
     node_id = plan['Node Type']
-    relation_name = plan.get('Relation Name', '')
-    filter_condition = plan.get('Filter', '')
-    hash_condition = plan.get('Hash Cond', '')
 
-    
-    if relation_name and relation_names is not None and node_id in relation_names:
-        node_id = f"{node_id}_{relation_name}"
-        relation_names[node_id] = relation_name
-    else:
-        relation_names[node_id] = relation_name
-    
-    label = f"{node_id}\n{relation_name}\n{filter_condition}\n{hash_condition}"
-    G.add_node(node_id, label=f"{node_id}\n{relation_name}",depth=depth,title=label)
+    node_identifier = f"{node_id}_{depth}_{unique_id}_{plan.get('Alias','')}_{plan.get('Strategy','')}"
+    label = f"{node_id}\n"
+    label += "\n".join([f"{key}: {value}" for key, value in plan.items() if key != 'Plans' and key != 'Parallel Aware' and key != 'Async Capable' and key != 'Actual Startup Time' and key!='Actual Total Time' and key != 'Workers'])
+
+    G.add_node(node_identifier, label=f"{node_id}{'('+plan.get('Relation Name', '')+')' if len(plan.get('Relation Name',''))>0 else ''}",depth=depth,title=label)
     
     if parent is not None:
-        G.add_edge(parent, node_id)
+        G.add_edge(parent,node_identifier)
     
     if 'Plans' in plan:
-        for child in plan['Plans']:
-            add_nodes_edges(child, parent=node_id, relation_names=relation_names,depth=depth+1)
+        for i,child in enumerate(plan['Plans']):
+            add_nodes_edges(child, parent=node_identifier,depth=depth+1,unique_id=i)
 
 def interactive_tree(input_json):
     result = json.loads(input_json)
     query_plan = result['Plan']
 
-    add_nodes_edges(query_plan, relation_names={})
+    add_nodes_edges(query_plan)
     dot = graphviz.Digraph(comment='Query Plan',graph_attr={'rankdir':'TB'})
     for node, attrs in G.nodes(data=True):
-        dot.node(node, attrs['label'], tooltip=attrs['title'],href='#')
+        print(node)
+        print(attrs)
+        try:
+            dot.node(node, attrs['label'], tooltip=attrs['title'],href='#')
+        except:
+            dot.node(node)
 
     for edge in G.edges():
         dot.edge(edge[1],edge[0])
